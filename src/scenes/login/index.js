@@ -10,7 +10,7 @@ import {
 import LoginForm from './LoginForm';
 import SplashScreen from 'react-native-splash-screen';
 // create a component
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({setLoggedIn}) => {
   setInterval(() => {
     SplashScreen.hide();
   }, 5000);
@@ -25,7 +25,7 @@ const LoginScreen = ({navigation}) => {
         />
       </View>
       <View style={styles.formContainer}>
-        <LoginForm navigation={navigation} />
+        <LoginForm setLoggedIn={setLoggedIn} />
       </View>
     </KeyboardAvoidingView>
   );

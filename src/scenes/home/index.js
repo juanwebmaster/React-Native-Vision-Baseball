@@ -1,18 +1,17 @@
 import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+
 import {
   View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Button,
   StyleSheet,
   StatusBar,
 } from 'react-native';
+const Drawer = createDrawerNavigator();
 const Home = ({name}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.textView}>Hello, You are Logged in.           Go on!</Text>
+
     </View>
   );
 };

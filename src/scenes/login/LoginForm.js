@@ -23,15 +23,15 @@ const getPosts = async(email, password) => {
   if (res.data.ID > 0) return true; else return false;
 };
 
-const LoginForm = ({navigation}) => {
+const LoginForm = ({setLoggedIn}) => {
   const [email, setEamil] = useState('');
   const [password, setPassword] = useState('');
   const onButtonPress = async() => {
     if (email !== '' && password !== '') {
       if (email == 'guest' && password == 'Marius4Spata!!') {
         const result = await getPosts(email, password);
-        
-        navigation.navigate("Home");
+        console.log(true);
+        setLoggedIn(true);
       }
     }
   };
