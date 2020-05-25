@@ -8,12 +8,9 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import LoginForm from './LoginForm';
-import SplashScreen from 'react-native-splash-screen';
 // create a component
 const LoginScreen = ({setLoggedIn}) => {
-  setInterval(() => {
-    SplashScreen.hide();
-  }, 5000);
+  
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
