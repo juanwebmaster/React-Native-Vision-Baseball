@@ -21,6 +21,7 @@ function MyDrawer() {
         component={HomeScreen}
         options={{drawerLabel: 'Home'}}
       />
+
       <Drawer.Screen
         name="YourStatus"
         component={StatusScreen}
