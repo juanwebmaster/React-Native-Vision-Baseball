@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {get_carousel_data} from '../../apis';
+import {get_carousel_data, get_user_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -12,6 +12,7 @@ import {
   StatusBar,
   Text,
   ScrollView,
+  ImageBackground,
   ImageBackgroundComponent,
 } from 'react-native';
 const Home = ({name}) => {
@@ -23,8 +24,11 @@ const Home = ({name}) => {
   const [schoolLevel, setSchoolLevel] = useState(0);
   const [youthLevel, setYouthLevel] = useState(0);
   const [recognitionTrain, setRecognitionTrain] = useState(0);
+  const [userData, setUserData] = useState({});
   useEffect(() => {
     async function fetchData() {
+      const uData = await get_user_data(90);
+      setUserData(uData);
       const menus = await get_carousel_data(1235);
       setTopMenu(menus);
       const tutorials = await get_carousel_data(1935);
@@ -55,6 +59,15 @@ const Home = ({name}) => {
       </View>
   );
 
+  const UserCircleData = ({text, imgUrl}) => {
+    return (
+      <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
+        <Text>{text}</Text>
+      </ImageBackground>
+    );
+  };
+  
+ 
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -62,6 +75,9 @@ const Home = ({name}) => {
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
+        <UserCircleData text={userData.login_count} imgUrl={userData.img_url} />
+        <UserCircleData text={userData.session_count} imgUrl={userData.img_url} />
+        <UserCircleData text={userData.user_trained_time} imgUrl={userData.img_url} />
         <CustomCarousel items={topMenu} />
         <CustomCarouselSplit items={tutorialImages} title="Tutorials >>>" />
         <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />
@@ -113,6 +129,14 @@ const styles = StyleSheet.create({
     
     flexGrow: 1,
     justifyContent: 'flex-end',
+  },
+  circleStyle: {
+    width: 100,
+    height: 100,
+    flex: 1,
+    alignItems: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
   },
 });
 export default Home;

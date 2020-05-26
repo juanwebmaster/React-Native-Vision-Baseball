@@ -25,3 +25,14 @@ export const get_carousel_data = async (id) => {
   const retValue = res.data.map((item) => BASE_URL + item);
   return retValue;
 };
+
+
+export const get_user_data = async (id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_user_data');
+  formData.append('user_id', id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  return res.data;
+}
