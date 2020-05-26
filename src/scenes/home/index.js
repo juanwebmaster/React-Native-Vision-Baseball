@@ -30,8 +30,6 @@ const Home = ({name}) => {
   const [userCalendar, setUserCalendar] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const uCalendar = await get_calendar_data(90);
-      setUserCalendar(uCalendar);
       const uData = await get_user_data(90);
       setUserData(uData);
       const menus = await get_carousel_data(1235);
@@ -50,6 +48,8 @@ const Home = ({name}) => {
       setYouthLevel(ylevel);
       const rTrain = await get_carousel_data(2645);
       setRecognitionTrain(rTrain);
+      const uCalendar = await get_calendar_data(90);
+      setUserCalendar(uCalendar);
     }
     fetchData();
   }, []);
@@ -64,21 +64,22 @@ const Home = ({name}) => {
     </View>
   );
   const CalendarData = () => {
-    console.log(userCalendar);
     return (
-      <View  style={styles.CalendarDataStyle}>
-        <Text style={styles.CalendarTextStyle}>{'>  30 Day Login\nStreak Challenge  <'}</Text>
+      <View style={styles.CalendarDataStyle}>
+        <Text style={styles.CalendarTextStyle}>
+          {'>  30 Day Login\nStreak Challenge  <'}
+        </Text>
         {userCalendar.map((item, index) => (
           <View style={styles.CalendarItemStyle}>
             <Text>{'Day ' + item.order}</Text>
             <ImageBackground
               key={index}
               style={styles.CalendarItemStyle}
-              source={{uri: item.thumbnail}}
-            >
-              <Image>
-
-              </Image>
+              source={{uri: item.thumbnail}}>
+              <Image
+                key={index}
+                style={styles.CalendarItemStyle}
+                source={{uri: item.stamp_url}}></Image>
             </ImageBackground>
           </View>
         ))}
@@ -89,7 +90,7 @@ const Home = ({name}) => {
   const UserCircleData = ({text, imgUrl}) => {
     return (
       <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
-        <Text>{text}</Text>
+        <Text style={styles.CircleText}>{text}</Text>
       </ImageBackground>
     );
   };
@@ -101,9 +102,7 @@ const Home = ({name}) => {
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
-        <CalendarData />
-
-        <UserCircleData text={userData.login_count} imgUrl={userData.img_url} />
+        <UserCircleData style={styles.CircleDataStyle} text={userData.login_count} imgUrl={userData.img_url} />
         <UserCircleData
           text={userData.session_count}
           imgUrl={userData.img_url}
@@ -112,6 +111,7 @@ const Home = ({name}) => {
           text={userData.user_trained_time}
           imgUrl={userData.img_url}
         />
+         
         <CustomCarousel items={topMenu} />
         <CustomCarouselSplit items={tutorialImages} title="Tutorials >>>" />
         <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />
@@ -132,6 +132,7 @@ const Home = ({name}) => {
           items={recognitionTrain}
           title="Spin, Speed Recognition Training >>>"
         />
+        <CalendarData />
       </ScrollView>
     </SafeAreaView>
   );
@@ -166,10 +167,21 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     alignContent: 'center',
-    borderWidth: 2,
+    margin: 20,
+  },
+  CircleDataStyle: {
+    flex: 1,
+    alignContent: 'center',
+    alignItems: 'center',
+  }, 
+  CircleText: {
+    fontSize: 18,
+    fontWeight: '600'
   },
   CalendarItemStyle: {
     width: 100,
@@ -185,15 +197,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#ffffff',
     width: SCREEN_WIDTH,
-    
+
     alignItems: 'center',
     alignSelf: 'baseline',
     alignContent: 'center',
   },
   CalendarTextStyle: {
     marginBottom: 20,
-    marginTop:20,
-    fontSize: 30
-  }
+    marginTop: 20,
+    fontSize: 30,
+  },
 });
 export default Home;
