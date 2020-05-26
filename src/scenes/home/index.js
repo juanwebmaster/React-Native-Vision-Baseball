@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {get_carousel_data, get_user_data} from '../../apis';
+import {get_carousel_data, get_user_data, get_calendar_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
-import {Header} from 'react-native-elements';
+import {Header, withTheme} from 'react-native-elements';
 import {
   View,
   Image,
@@ -14,7 +14,9 @@ import {
   ScrollView,
   ImageBackground,
   ImageBackgroundComponent,
+  Dimensions,
 } from 'react-native';
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const Home = ({name}) => {
   const [topMenu, setTopMenu] = useState(0);
   const [tutorialImages, setTutorialImages] = useState(0);
@@ -25,8 +27,11 @@ const Home = ({name}) => {
   const [youthLevel, setYouthLevel] = useState(0);
   const [recognitionTrain, setRecognitionTrain] = useState(0);
   const [userData, setUserData] = useState({});
+  const [userCalendar, setUserCalendar] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      const uCalendar = await get_calendar_data(90);
+      setUserCalendar(uCalendar);
       const uData = await get_user_data(90);
       setUserData(uData);
       const menus = await get_carousel_data(1235);
@@ -48,16 +53,38 @@ const Home = ({name}) => {
     }
     fetchData();
   }, []);
-  
+
   const headerIcon = () => (
     <View style={styles.logoContainer}>
-        <Image
-          resizeMode='center'
-          style={styles.logo}
-          source={require('../../assets/images/header.png')}
-        />
-      </View>
+      <Image
+        resizeMode="center"
+        style={styles.logo}
+        source={require('../../assets/images/header.png')}
+      />
+    </View>
   );
+  const CalendarData = () => {
+    console.log(userCalendar);
+    return (
+      <View  style={styles.CalendarDataStyle}>
+        <Text style={styles.CalendarTextStyle}>{'>  30 Day Login\nStreak Challenge  <'}</Text>
+        {userCalendar.map((item, index) => (
+          <View style={styles.CalendarItemStyle}>
+            <Text>{'Day ' + item.order}</Text>
+            <ImageBackground
+              key={index}
+              style={styles.CalendarItemStyle}
+              source={{uri: item.thumbnail}}
+            >
+              <Image>
+
+              </Image>
+            </ImageBackground>
+          </View>
+        ))}
+      </View>
+    );
+  };
 
   const UserCircleData = ({text, imgUrl}) => {
     return (
@@ -66,8 +93,7 @@ const Home = ({name}) => {
       </ImageBackground>
     );
   };
-  
- 
+
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -75,9 +101,17 @@ const Home = ({name}) => {
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
+        <CalendarData />
+
         <UserCircleData text={userData.login_count} imgUrl={userData.img_url} />
-        <UserCircleData text={userData.session_count} imgUrl={userData.img_url} />
-        <UserCircleData text={userData.user_trained_time} imgUrl={userData.img_url} />
+        <UserCircleData
+          text={userData.session_count}
+          imgUrl={userData.img_url}
+        />
+        <UserCircleData
+          text={userData.user_trained_time}
+          imgUrl={userData.img_url}
+        />
         <CustomCarousel items={topMenu} />
         <CustomCarouselSplit items={tutorialImages} title="Tutorials >>>" />
         <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />
@@ -116,17 +150,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   imageBackgroundStyle: {
-    height:30,
+    height: 30,
     width: 40,
   },
   logo: {
     width: 150,
     height: 80,
-    marginLeft:20,
-    
+    marginLeft: 20,
   },
   logoContainer: {
-    
     flexGrow: 1,
     justifyContent: 'flex-end',
   },
@@ -137,6 +169,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     alignContent: 'center',
+    borderWidth: 2,
   },
+  CalendarItemStyle: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+  },
+  CalendarDataStyle: {
+    flex: 1,
+    flexWrap: 'wrap',
+    paddingLeft: 50,
+    paddingRight: 50,
+    paddingBottom: 50,
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    width: SCREEN_WIDTH,
+    
+    alignItems: 'center',
+    alignSelf: 'baseline',
+    alignContent: 'center',
+  },
+  CalendarTextStyle: {
+    marginBottom: 20,
+    marginTop:20,
+    fontSize: 30
+  }
 });
 export default Home;

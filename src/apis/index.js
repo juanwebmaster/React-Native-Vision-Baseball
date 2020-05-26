@@ -26,7 +26,6 @@ export const get_carousel_data = async (id) => {
   return retValue;
 };
 
-
 export const get_user_data = async (id) => {
   const formData = new FormData();
   formData.append('action', 'get_user_data');
@@ -35,4 +34,20 @@ export const get_user_data = async (id) => {
     headers: {'Content-Type': 'multipart/form-data'},
   });
   return res.data;
-}
+};
+
+export const get_calendar_data = async (id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_calendar_data');
+  formData.append('user_id', id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  res.data.map((item) => {
+    item.thumbnail = item.thumbnail.replace()
+      .replace(/(<img ).+(src=")/gi, '')
+      .replace(/(" class=).+(>)/gi, '');
+    return item;
+  });
+  return res.data;
+};
