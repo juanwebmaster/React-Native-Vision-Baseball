@@ -1,27 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-
-import {
-  get_carousel_data,
-  get_user_data,
-
-} from '../../apis';
+import FrequentUsers from '_organisms/FrequentUsers';
+import {get_carousel_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
 import CalendarData from '_organisms/CalendarData';
-import FrequentUsers from '_organisms/FrequentUsers'
+import UserLoginData from '_organisms/UserLoginData'
 import {
   View,
   Image,
   StyleSheet,
-  StatusBar,
   Text,
   ScrollView,
-  ImageBackground,
-  ImageBackgroundComponent,
   Dimensions,
 } from 'react-native';
 
@@ -35,15 +28,10 @@ const Home = ({name}) => {
   const [schoolLevel, setSchoolLevel] = useState(0);
   const [youthLevel, setYouthLevel] = useState(0);
   const [recognitionTrain, setRecognitionTrain] = useState(0);
-  const [userData, setUserData] = useState({});
-  
-  
+
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
-      
-      const uData = await get_user_data(90);
-      setUserData(uData);
       const menus = await get_carousel_data(1235);
       setTopMenu(menus);
       const tutorials = await get_carousel_data(1935);
@@ -75,19 +63,6 @@ const Home = ({name}) => {
     </View>
   );
 
-
-  const UserCircleData = ({counts, imgUrl, label}) => {
-    return (
-      <View>
-        <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
-          <Text style={styles.CircleText}>{counts}</Text>
-        </ImageBackground>
-        <Text style={{color: '#ffffff', textAlign: 'center', fontSize:20}}>{label}</Text>
-      </View>
-    );
-  };
-
-
   const Footer = () => {
     return (
       <View style={styles.FooterStyle}>
@@ -105,36 +80,21 @@ const Home = ({name}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={isLoading} textContent={'Loading...'} textStyle={styles.spinnerTextStyle} />
+      <Spinner
+        visible={isLoading}
+        textContent={'Loading...'}
+        textStyle={styles.spinnerTextStyle}
+      />
       <Header
         rightComponent={{
           icon: 'menu',
-          // backgroundColor: '#3e8ae6',
           color: '#fff',
           height: '150%',
         }}
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
-        <View style={{marginTop: 30, marginBottom: 50}}>
-          <UserCircleData
-            style={styles.CircleDataStyle}
-            counts={userData.login_count}
-            imgUrl={userData.img_url1}
-            label="Total Login Days"
-          />
-          <UserCircleData
-            counts={userData.session_count}
-            imgUrl={userData.img_url1}
-            label="Sessions Completed"
-          />
-          <UserCircleData
-            counts={userData.user_trained_time}
-            imgUrl={userData.img_url2}
-            label="Total Time Trained"
-          />
-        </View>
-
+        <UserLoginData />
         <CustomCarousel items={topMenu} />
         <View
           style={{
@@ -194,27 +154,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'flex-end',
   },
-  circleStyle: {
-    width: 130,
-    height: 130,
-    flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    alignContent: 'center',
-    margin: 5,
-  },
-  CircleDataStyle: {
-    flex: 1,
-    alignContent: 'center',
-    alignItems: 'center',
-  },
-  CircleText: {
-    fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center'
-  },
   
 
   FooterStyle: {
@@ -230,7 +169,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     paddingBottom: 50,
   },
-  
+
   FooterLogoStyle: {
     width: 200,
     height: 120,
@@ -241,9 +180,9 @@ const styles = StyleSheet.create({
   },
 
   spinnerTextStyle: {
-    color: '#FFF'
+    color: '#FFF',
   },
-  
+
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -251,8 +190,8 @@ const styles = StyleSheet.create({
   },
   instructions: {
     textAlign: 'center',
-    color:'#333333',
-    marginBottom: 5
-  }
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 export default Home;
