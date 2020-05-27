@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {DataTable} from 'react-native-paper';
 import {
   get_carousel_data,
   get_user_data,
-  get_calendar_data,
   get_ranking_data,
 } from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
@@ -11,6 +11,7 @@ import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
+import CalendarData from '_organisms/CalendarData';
 import {
   View,
   Image,
@@ -22,7 +23,7 @@ import {
   ImageBackgroundComponent,
   Dimensions,
 } from 'react-native';
-import {DataTable} from 'react-native-paper';
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const Home = ({name}) => {
   const [topMenu, setTopMenu] = useState(0);
@@ -34,7 +35,7 @@ const Home = ({name}) => {
   const [youthLevel, setYouthLevel] = useState(0);
   const [recognitionTrain, setRecognitionTrain] = useState(0);
   const [userData, setUserData] = useState({});
-  const [userCalendar, setUserCalendar] = useState([]);
+  
   const [rankingData, setRankingData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -59,8 +60,6 @@ const Home = ({name}) => {
       setYouthLevel(ylevel);
       const rTrain = await get_carousel_data(2645);
       setRecognitionTrain(rTrain);
-      const uCalendar = await get_calendar_data(90);
-      setUserCalendar(uCalendar);
       setIsLoading(false);
     }
     fetchData();
@@ -75,29 +74,7 @@ const Home = ({name}) => {
       />
     </View>
   );
-  const CalendarData = () => {
-    return (
-      <View style={styles.CalendarDataStyle}>
-        <Text style={styles.CalendarTextStyle}>
-          {'>  30 Day Login\nStreak Challenge  <'}
-        </Text>
-        {userCalendar.map((item, index) => (
-          <View style={styles.CalendarItemStyle} key={index}>
-            <Text>{'Day ' + item.order}</Text>
-            <ImageBackground
-              key={index}
-              style={styles.CalendarItemStyle}
-              source={{uri: item.thumbnail}}>
-              <Image
-                key={index}
-                style={styles.CalendarItemStyle}
-                source={{uri: item.stamp_url}}></Image>
-            </ImageBackground>
-          </View>
-        ))}
-      </View>
-    );
-  };
+
 
   const UserCircleData = ({counts, imgUrl, label}) => {
     return (
@@ -135,10 +112,9 @@ const Home = ({name}) => {
             <DataTable.Title numeric>Trained Days</DataTable.Title>
           </DataTable.Header>
           {rankingData.map((item, index) => (
-            <DataTable.Row>
+            <DataTable.Row key={index}>
               <DataTable.Cell>{index+1}</DataTable.Cell>
               <DataTable.Cell><ImageBackground
-                key={index}
                 style={styles.RankingItemStyle}
                 source={{uri: item.avatar}}>
               </ImageBackground></DataTable.Cell>
@@ -279,30 +255,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center'
   },
-  CalendarItemStyle: {
-    width: 100,
-    height: 100,
-    marginBottom: 20,
-  },
-  CalendarDataStyle: {
-    flex: 1,
-    flexWrap: 'wrap',
-    paddingLeft: 50,
-    paddingRight: 50,
-    paddingBottom: 50,
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    width: SCREEN_WIDTH,
-
-    alignItems: 'center',
-    alignSelf: 'baseline',
-    alignContent: 'center',
-  },
-  CalendarTextStyle: {
-    marginBottom: 20,
-    marginTop: 20,
-    fontSize: 30,
-  },
+  
   FrequentUsersStyle: {
     flex: 1,
     flexWrap: 'wrap',
