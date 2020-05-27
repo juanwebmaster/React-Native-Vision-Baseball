@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {DataTable} from 'react-native-paper';
+
 import {
   get_carousel_data,
   get_user_data,
-  get_ranking_data,
+
 } from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
@@ -12,6 +12,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
 import CalendarData from '_organisms/CalendarData';
+import FrequentUsers from '_organisms/FrequentUsers'
 import {
   View,
   Image,
@@ -36,12 +37,11 @@ const Home = ({name}) => {
   const [recognitionTrain, setRecognitionTrain] = useState(0);
   const [userData, setUserData] = useState({});
   
-  const [rankingData, setRankingData] = useState([]);
+  
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
-      const rData = await get_ranking_data(2020);
-      setRankingData(rData);
+      
       const uData = await get_user_data(90);
       setUserData(uData);
       const menus = await get_carousel_data(1235);
@@ -87,46 +87,6 @@ const Home = ({name}) => {
     );
   };
 
-  const FrequentUsers = () => {
-    return (
-      <View style={styles.FrequentUsersStyle}>
-        <Text style={{fontSize: 27, fontWeight: '500', paddingBottom: 10}}>
-          Top Frequent Users
-        </Text>
-        <Text
-          style={{
-            fontSize: 17,
-            fontWeight: '400',
-            paddingBottom: 10,
-            paddingRight: 20,
-          }}>
-          This is a leaderboard of the top hitters in Applied Vision Baseball.
-          Upload your profile pic here.
-        </Text>
-        <Text>Search:</Text>
-        <DataTable>
-          <DataTable.Header>
-            <DataTable.Title>No</DataTable.Title>
-            <DataTable.Title>Avatar</DataTable.Title>
-            <DataTable.Title>Name</DataTable.Title>
-            <DataTable.Title numeric>Trained Days</DataTable.Title>
-          </DataTable.Header>
-          {rankingData.map((item, index) => (
-            <DataTable.Row key={index}>
-              <DataTable.Cell>{index+1}</DataTable.Cell>
-              <DataTable.Cell><ImageBackground
-                style={styles.RankingItemStyle}
-                source={{uri: item.avatar}}>
-              </ImageBackground></DataTable.Cell>
-              
-              <DataTable.Cell>{item.user_name}</DataTable.Cell>
-              <DataTable.Cell numeric>{item.training_day}</DataTable.Cell>
-            </DataTable.Row>
-          ))}
-        </DataTable>
-      </View>
-    );
-  };
 
   const Footer = () => {
     return (
@@ -256,19 +216,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   
-  FrequentUsersStyle: {
-    flex: 1,
-    flexWrap: 'wrap',
-    padding: 50,
-    marginTop: 20,
-    flexDirection: 'row',
-    backgroundColor: '#ffffff',
-    width: SCREEN_WIDTH,
 
-    alignItems: 'center',
-    alignSelf: 'baseline',
-    alignContent: 'center',
-  },
   FooterStyle: {
     backgroundColor: '#3e8ae6',
     marginTop: 50,
@@ -282,19 +230,7 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     paddingBottom: 50,
   },
-  RankingItemStyle: {
-    width: 20,
-    height: 20,
-    
-  },
-  RankingTableStyle: {
-    flex:1,
-    height:100,
-    width: SCREEN_WIDTH,
-  },
-  RankingRowStyle: {
-    flexDirection: 'row'
-  }, 
+  
   FooterLogoStyle: {
     width: 200,
     height: 120,
