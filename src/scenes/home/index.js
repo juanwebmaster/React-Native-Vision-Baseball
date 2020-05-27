@@ -4,7 +4,7 @@ import {get_carousel_data, get_user_data, get_calendar_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
-import {Header, withTheme} from 'react-native-elements';
+import {Header, Footer} from 'react-native-elements';
 import {
   View,
   Image,
@@ -89,20 +89,69 @@ const Home = ({name}) => {
 
   const UserCircleData = ({text, imgUrl}) => {
     return (
-      <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
-        <Text style={styles.CircleText}>{text}</Text>
-      </ImageBackground>
+      <View>
+        <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
+          <Text style={styles.CircleText}>{text}</Text>
+        </ImageBackground>
+        
+      </View>
+      
     );
   };
 
+  const FrequentUsers = () => {
+    return (
+      <View style={styles.FrequentUsersStyle}>
+        <Text style={{fontSize: 27, fontWeight: '500', paddingBottom: 10}}>
+          Top Frequent Users
+        </Text>
+        <Text
+          style={{
+            fontSize: 17,
+            fontWeight: '400',
+            paddingBottom: 10,
+            paddingRight: 20,
+          }}>
+          This is a leaderboard of the top hitters in Applied Vision Baseball.
+          Upload your profile pic here.
+        </Text>
+        <Text>Search:</Text>
+      </View>
+    );
+  };
+
+  const Footer = () => {
+    return (
+      <View style={styles.FooterStyle}>
+        <Image
+          resizeMode="center"
+          style={styles.FooterLogoStyle}
+          source={require('../../assets/images/logo2.png')}
+        />
+        <Text style={{textAlign: 'center', fontSize: 12, lineHeight: 30}}>
+          2010-2020 Art of Baseball DBA Applied Vision Baseball. All Rights
+          Reserved. SiteMap. Privacy Policy
+        </Text>
+      </View>
+    );
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Header
-        rightComponent={{icon: 'menu', color: '#fff', height: '150%'}}
+        rightComponent={{
+          icon: 'menu',
+          // backgroundColor: '#3e8ae6',
+          color: '#fff',
+          height: '150%',
+        }}
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
-        <UserCircleData style={styles.CircleDataStyle} text={userData.login_count} imgUrl={userData.img_url} />
+        <UserCircleData
+          style={styles.CircleDataStyle}
+          text={userData.login_count}
+          imgUrl={userData.img_url}
+        />
         <UserCircleData
           text={userData.session_count}
           imgUrl={userData.img_url}
@@ -111,7 +160,7 @@ const Home = ({name}) => {
           text={userData.user_trained_time}
           imgUrl={userData.img_url}
         />
-         
+
         <CustomCarousel items={topMenu} />
         <CustomCarouselSplit items={tutorialImages} title="Tutorials >>>" />
         <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />
@@ -133,6 +182,8 @@ const Home = ({name}) => {
           title="Spin, Speed Recognition Training >>>"
         />
         <CalendarData />
+        <FrequentUsers />
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
@@ -178,10 +229,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: 'center',
     alignItems: 'center',
-  }, 
+  },
   CircleText: {
     fontSize: 18,
-    fontWeight: '600'
+    fontWeight: '600',
   },
   CalendarItemStyle: {
     width: 100,
@@ -206,6 +257,40 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     fontSize: 30,
+  },
+  FrequentUsersStyle: {
+    flex: 1,
+    flexWrap: 'wrap',
+    padding: 50,
+    marginTop: 20,
+    flexDirection: 'row',
+    backgroundColor: '#ffffff',
+    width: SCREEN_WIDTH,
+
+    alignItems: 'center',
+    alignSelf: 'baseline',
+    alignContent: 'center',
+  },
+  FooterStyle: {
+    backgroundColor: '#3e8ae6',
+    marginTop: 50,
+    paddingTop:40,
+    width: SCREEN_WIDTH * 0.9,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'baseline',
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingBottom: 50,
+  },
+  FooterLogoStyle: {
+    width: 200,
+    height: 120,
+    paddingTop: 50,
+    paddingBottom: 50,
+    
+    resizeMode: 'stretch',
   },
 });
 export default Home;
