@@ -9,7 +9,8 @@ import {
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
-import {Header, Footer} from 'react-native-elements';
+import {Header} from 'react-native-elements';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {
   View,
   Image,
@@ -35,6 +36,7 @@ const Home = ({name}) => {
   const [userData, setUserData] = useState({});
   const [userCalendar, setUserCalendar] = useState([]);
   const [rankingData, setRankingData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
       const rData = await get_ranking_data(2020);
@@ -59,7 +61,7 @@ const Home = ({name}) => {
       setRecognitionTrain(rTrain);
       const uCalendar = await get_calendar_data(90);
       setUserCalendar(uCalendar);
-      
+      setIsLoading(false);
     }
     fetchData();
   }, []);
@@ -167,6 +169,7 @@ const Home = ({name}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
+      <Spinner visible={isLoading} textContent={'Loading...'} textStyle={styles.spinnerTextStyle} />
       <Header
         rightComponent={{
           icon: 'menu',
@@ -347,5 +350,20 @@ const styles = StyleSheet.create({
 
     resizeMode: 'stretch',
   },
+
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
+  
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color:'#333333',
+    marginBottom: 5
+  }
 });
 export default Home;
