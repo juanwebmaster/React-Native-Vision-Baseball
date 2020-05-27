@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageBackgroundStyle: {
-    width: '100%',
-    height: 100,
+    width: SCREEN_WIDTH / 2.5,
+    height: 90,
     justifyContent: 'center',
   },
 });

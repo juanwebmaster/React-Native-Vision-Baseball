@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {get_carousel_data, get_user_data, get_calendar_data} from '../../apis';
+import {
+  get_carousel_data,
+  get_user_data,
+  get_calendar_data,
+  get_ranking_data,
+} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -16,6 +21,7 @@ import {
   ImageBackgroundComponent,
   Dimensions,
 } from 'react-native';
+import {DataTable} from 'react-native-paper';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const Home = ({name}) => {
   const [topMenu, setTopMenu] = useState(0);
@@ -28,8 +34,11 @@ const Home = ({name}) => {
   const [recognitionTrain, setRecognitionTrain] = useState(0);
   const [userData, setUserData] = useState({});
   const [userCalendar, setUserCalendar] = useState([]);
+  const [rankingData, setRankingData] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      const rData = await get_ranking_data(2020);
+      setRankingData(rData);
       const uData = await get_user_data(90);
       setUserData(uData);
       const menus = await get_carousel_data(1235);
@@ -50,6 +59,7 @@ const Home = ({name}) => {
       setRecognitionTrain(rTrain);
       const uCalendar = await get_calendar_data(90);
       setUserCalendar(uCalendar);
+      
     }
     fetchData();
   }, []);
@@ -70,7 +80,7 @@ const Home = ({name}) => {
           {'>  30 Day Login\nStreak Challenge  <'}
         </Text>
         {userCalendar.map((item, index) => (
-          <View style={styles.CalendarItemStyle}>
+          <View style={styles.CalendarItemStyle} key={index}>
             <Text>{'Day ' + item.order}</Text>
             <ImageBackground
               key={index}
@@ -87,15 +97,14 @@ const Home = ({name}) => {
     );
   };
 
-  const UserCircleData = ({text, imgUrl}) => {
+  const UserCircleData = ({counts, imgUrl, label}) => {
     return (
       <View>
         <ImageBackground style={styles.circleStyle} source={{uri: imgUrl}}>
-          <Text style={styles.CircleText}>{text}</Text>
+          <Text style={styles.CircleText}>{counts}</Text>
         </ImageBackground>
-        
+        <Text style={{color: '#ffffff', textAlign: 'center', fontSize:20}}>{label}</Text>
       </View>
-      
     );
   };
 
@@ -116,6 +125,27 @@ const Home = ({name}) => {
           Upload your profile pic here.
         </Text>
         <Text>Search:</Text>
+        <DataTable>
+          <DataTable.Header>
+            <DataTable.Title>No</DataTable.Title>
+            <DataTable.Title>Avatar</DataTable.Title>
+            <DataTable.Title>Name</DataTable.Title>
+            <DataTable.Title numeric>Trained Days</DataTable.Title>
+          </DataTable.Header>
+          {rankingData.map((item, index) => (
+            <DataTable.Row>
+              <DataTable.Cell>{index+1}</DataTable.Cell>
+              <DataTable.Cell><ImageBackground
+                key={index}
+                style={styles.RankingItemStyle}
+                source={{uri: item.avatar}}>
+              </ImageBackground></DataTable.Cell>
+              
+              <DataTable.Cell>{item.user_name}</DataTable.Cell>
+              <DataTable.Cell numeric>{item.training_day}</DataTable.Cell>
+            </DataTable.Row>
+          ))}
+        </DataTable>
       </View>
     );
   };
@@ -147,21 +177,32 @@ const Home = ({name}) => {
         leftComponent={headerIcon}
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
-        <UserCircleData
-          style={styles.CircleDataStyle}
-          text={userData.login_count}
-          imgUrl={userData.img_url}
-        />
-        <UserCircleData
-          text={userData.session_count}
-          imgUrl={userData.img_url}
-        />
-        <UserCircleData
-          text={userData.user_trained_time}
-          imgUrl={userData.img_url}
-        />
+        <View style={{marginTop: 30, marginBottom: 50}}>
+          <UserCircleData
+            style={styles.CircleDataStyle}
+            counts={userData.login_count}
+            imgUrl={userData.img_url1}
+            label="Total Login Days"
+          />
+          <UserCircleData
+            counts={userData.session_count}
+            imgUrl={userData.img_url1}
+            label="Sessions Completed"
+          />
+          <UserCircleData
+            counts={userData.user_trained_time}
+            imgUrl={userData.img_url2}
+            label="Total Time Trained"
+          />
+        </View>
 
         <CustomCarousel items={topMenu} />
+        <View
+          style={{
+            marginTop: 60,
+            borderBottomWidth: 2,
+            borderColor: '#888888',
+          }}></View>
         <CustomCarouselSplit items={tutorialImages} title="Tutorials >>>" />
         <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />
         <CustomCarouselSplit
@@ -215,15 +256,15 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   circleStyle: {
-    width: 100,
-    height: 100,
+    width: 130,
+    height: 130,
     flex: 1,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     alignContent: 'center',
-    margin: 20,
+    margin: 5,
   },
   CircleDataStyle: {
     flex: 1,
@@ -231,8 +272,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   CircleText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
+    textAlign: 'center'
   },
   CalendarItemStyle: {
     width: 100,
@@ -274,7 +316,7 @@ const styles = StyleSheet.create({
   FooterStyle: {
     backgroundColor: '#3e8ae6',
     marginTop: 50,
-    paddingTop:40,
+    paddingTop: 40,
     width: SCREEN_WIDTH * 0.9,
     flex: 1,
     justifyContent: 'center',
@@ -284,12 +326,25 @@ const styles = StyleSheet.create({
     paddingRight: 5,
     paddingBottom: 50,
   },
+  RankingItemStyle: {
+    width: 20,
+    height: 20,
+    
+  },
+  RankingTableStyle: {
+    flex:1,
+    height:100,
+    width: SCREEN_WIDTH,
+  },
+  RankingRowStyle: {
+    flexDirection: 'row'
+  }, 
   FooterLogoStyle: {
     width: 200,
     height: 120,
     paddingTop: 50,
     paddingBottom: 50,
-    
+
     resizeMode: 'stretch',
   },
 });

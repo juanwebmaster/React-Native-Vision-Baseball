@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageBackgroundStyle: {
-    width: SCREEN_WIDTH,
+    width: SCREEN_WIDTH * 0.9,
     height: 200,
     justifyContent: 'center',
   },

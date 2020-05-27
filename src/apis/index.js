@@ -51,3 +51,20 @@ export const get_calendar_data = async (id) => {
   });
   return res.data;
 };
+
+export const get_ranking_data = async (board_id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_ranking_data');
+  formData.append('board_id', board_id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  res.data.map((item) => {
+    item.avatar = item.avatar.replace()
+      .replace(/<img src="/gi, '')
+      .replace(/(" width="96").+(>)/gi, '');
+    return item;
+  });
+  console.log(res.data);
+  return res.data;
+};
