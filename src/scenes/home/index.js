@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
-import {get_carousel_data,get_bodybkcolor_data} from '../../apis';
+import {get_carousel_data,get_bodybkcolor_data, get_ranking_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -28,28 +28,53 @@ const Home = ({name}) => {
   const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    async function fetchData() {
+    async function get_color() {
       const bColor = await get_bodybkcolor_data(1206);
       setBkColor(bColor);
+    }
+    async function get_menu() {
       const menus = await get_carousel_data(1235);
       setTopMenu(menus);
+    }
+    async function get_tutorials() {
       const tutorials = await get_carousel_data(1935);
       setTutorialImages(tutorials);
+    }
+    async function get_pitchers() {
       const pitchers = await get_carousel_data(1224);
       setPopPitchers(pitchers);
+    }
+    async function get_drills() {
       const drills = await get_carousel_data(1218);
       setSpecializedDrills(drills);
+    }
+    async function get_plevel() {
       const plevel = await get_carousel_data(1226);
       setProLevel(plevel);
+    }
+    async function get_slevel() {
       const slevel = await get_carousel_data(1228);
       setSchoolLevel(slevel);
+    }
+    async function get_ylevel(){
       const ylevel = await get_carousel_data(1864);
       setYouthLevel(ylevel);
+    }
+    async function get_rTrain() {
       const rTrain = await get_carousel_data(2645);
       setRecognitionTrain(rTrain);
       setIsLoading(false);
-    }
-    fetchData();
+    }  
+    get_color();
+    get_menu();
+    get_tutorials();
+    get_drills();
+    get_plevel();
+    get_slevel();
+    get_ylevel();
+    get_rTrain();
+    get_pitchers();
+    
   }, []);
   
   return (

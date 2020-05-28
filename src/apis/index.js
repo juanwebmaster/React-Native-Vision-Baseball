@@ -39,7 +39,7 @@ export const get_user_data = async (id) => {
 export const get_calendar_data = async (id) => {
   const formData = new FormData();
   formData.append('action', 'get_calendar_data');
-  formData.append('user_id', id);
+  formData.append('calendar_id', id);
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
