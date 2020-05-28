@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
-import {get_carousel_data, get_bodybkcolor_data} from '../../apis';
-import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
+import {get_bodybkcolor_data} from '../../apis';
+import RecognitionTrainCarousel from '_organisms/RecognitionTrainCarousel';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -15,40 +15,20 @@ import PopPitchersCarousel from '_organisms/PopPitchersCarousel';
 import DrillsCarousel from '_organisms/DrillsCarousel';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import ProLevelCarousel from '_organisms/ProLevelCarousel';
+import SchoolLevelCarousel from '_organisms/SchoolLevelCarousel';
+import YouthLevelCarousel from '_organisms/YouthLevelCarousel';
 
 const Home = ({name}) => {
   
-  const [schoolLevel, setSchoolLevel] = useState(0);
-  const [youthLevel, setYouthLevel] = useState(0);
-  const [recognitionTrain, setRecognitionTrain] = useState(0);
   const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function get_color() {
       const bColor = await get_bodybkcolor_data(1206);
       setBkColor(bColor);
-    }
-
-    
-    async function get_slevel() {
-      const slevel = await get_carousel_data(1228);
-      setSchoolLevel(slevel);
-    }
-    async function get_ylevel() {
-      const ylevel = await get_carousel_data(1864);
-      setYouthLevel(ylevel);
-    }
-    async function get_rTrain() {
-      const rTrain = await get_carousel_data(2645);
-      setRecognitionTrain(rTrain);
       setIsLoading(false);
     }
     get_color();
-
-    
-    get_slevel();
-    get_ylevel();
-    get_rTrain();
   }, []);
 
   return (
@@ -79,18 +59,9 @@ const Home = ({name}) => {
         <PopPitchersCarousel />
         <DrillsCarousel />
         <ProLevelCarousel />
-        <CustomCarouselSplit
-          items={schoolLevel}
-          title="College & Highschool Level >>>"
-        />
-        <CustomCarouselSplit
-          items={youthLevel}
-          title="Youth Level Pitchers >>>"
-        />
-        <CustomCarouselSplit
-          items={recognitionTrain}
-          title="Spin, Speed Recognition Training >>>"
-        />
+        <SchoolLevelCarousel />
+        <YouthLevelCarousel />
+        <RecognitionTrainCarousel />
         <CalendarData />
         <FrequentUsers />
         <CustomFooter />
@@ -114,11 +85,9 @@ const styles = StyleSheet.create({
     height: 30,
     width: 40,
   },
-
   spinnerTextStyle: {
     color: '#FFF',
   },
-
   welcome: {
     fontSize: 20,
     textAlign: 'center',
