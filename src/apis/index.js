@@ -68,3 +68,14 @@ export const get_ranking_data = async (board_id) => {
   console.log(res.data);
   return res.data;
 };
+
+export const get_bodybkcolor_data = async (board_id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_bodybkcolor_data');
+  formData.append('board_id', board_id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  console.log(res.data);
+  return res.data;
+};

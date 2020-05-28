@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
-import {get_carousel_data} from '../../apis';
+import {get_carousel_data,get_bodybkcolor_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -16,7 +16,6 @@ import {
   ScrollView,
 } from 'react-native';
 
-
 const Home = ({name}) => {
   const [topMenu, setTopMenu] = useState(0);
   const [tutorialImages, setTutorialImages] = useState(0);
@@ -26,10 +25,12 @@ const Home = ({name}) => {
   const [schoolLevel, setSchoolLevel] = useState(0);
   const [youthLevel, setYouthLevel] = useState(0);
   const [recognitionTrain, setRecognitionTrain] = useState(0);
-
+  const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     async function fetchData() {
+      const bColor = await get_bodybkcolor_data(1206);
+      setBkColor(bColor);
       const menus = await get_carousel_data(1235);
       setTopMenu(menus);
       const tutorials = await get_carousel_data(1935);
@@ -52,7 +53,7 @@ const Home = ({name}) => {
   }, []);
   
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}>
       <Spinner
         visible={isLoading}
         textContent={'Loading...'}
@@ -105,7 +106,6 @@ const Home = ({name}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3e50',
     justifyContent: 'center',
   },
   sliderContainer: {
