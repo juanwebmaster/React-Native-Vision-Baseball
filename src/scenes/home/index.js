@@ -18,7 +18,7 @@ import ProLevelCarousel from '_organisms/ProLevelCarousel';
 import SchoolLevelCarousel from '_organisms/SchoolLevelCarousel';
 import YouthLevelCarousel from '_organisms/YouthLevelCarousel';
 
-const Home = ({name}) => {
+const Home = ({name, navigation}) => {
   
   const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +48,7 @@ const Home = ({name}) => {
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
         <UserLoginData />
-        <TopMenuCarousel />
+        <TopMenuCarousel navigation={navigation} />
         <View
           style={{
             marginTop: 60,

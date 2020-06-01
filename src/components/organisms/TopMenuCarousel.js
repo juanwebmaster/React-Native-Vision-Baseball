@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {get_carousel_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 
-const TopMenuCarousel = () => {
+const TopMenuCarousel = ({navigation}) => {
   const [topMenu, setTopMenu] = useState(0);
   useEffect(() => {
     async function get_menu() {
@@ -12,7 +12,7 @@ const TopMenuCarousel = () => {
     get_menu();
   }, []);
 
-  return <CustomCarousel items={topMenu} />;
+  return <CustomCarousel items={topMenu} navigation={navigation}/>;
 };
 
 export default TopMenuCarousel;

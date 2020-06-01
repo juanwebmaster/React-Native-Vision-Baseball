@@ -34,7 +34,7 @@ export default class CustomCarouselSplit extends React.Component {
     return (
       <Card style={styles.cardContainerStyle}>
           <ImageBackground
-            source={{uri: item}}
+            source={{uri: item.img_url}}
             style={styles.imageBackgroundStyle}>
           </ImageBackground>
       </Card>

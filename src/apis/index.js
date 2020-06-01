@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api_endpoint =
   'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php';
-const BASE_URL = 'https://appliedvisionbaseball.com/';
+const BASE_URL = 'http://localhost:8888/vision-baseball/';
 export const AuthenticateUser = async (email, password) => {
   const formData = new FormData();
   formData.append('action', 'authenticate_user');
@@ -17,13 +17,14 @@ export const AuthenticateUser = async (email, password) => {
 
 export const get_carousel_data = async (id) => {
   const formData = new FormData();
-  formData.append('action', 'get_carousel_data');
+  formData.append('action', 'get_carousel');
   formData.append('id', id);
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  const retValue = res.data.map((item) => BASE_URL + item);
-  return retValue;
+  res.data.map((item) => item.img_url = BASE_URL + item.img_url);
+  console.log(res.data);
+  return res.data;
 };
 
 export const get_user_data = async (id) => {
