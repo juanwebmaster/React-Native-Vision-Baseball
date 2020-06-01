@@ -19,7 +19,6 @@ const CustomFooter = () => {
 const styles = StyleSheet.create({
   CustomFooterStyle: {
     backgroundColor: '#3e8ae6',
-    marginTop: 50,
     paddingTop: 40,
     paddingLeft: 5,
     paddingRight: 5,

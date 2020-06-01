@@ -21,7 +21,7 @@ export default class CustomCarouselSplit extends React.Component {
     handleClick = (id) => {
       const {navigation} = this.props;
 
-      navigation.navigate('SelectLevel', {post_id:id});
+      if (id) navigation.navigate('SelectLevel', {post_id:id});
       console.log('id=>',id);
     };
   

@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     padding: 50,
     marginTop: 20,
+    marginBottom:50,
     flexDirection: 'row',
     backgroundColor: '#ffffff',
     width: global.SCREEN_WIDTH,

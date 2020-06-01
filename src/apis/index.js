@@ -23,7 +23,7 @@ export const get_carousel_data = async (id) => {
     headers: {'Content-Type': 'multipart/form-data'},
   });
   res.data.map((item) => item.img_url = BASE_URL + item.img_url);
-  console.log(res.data);
+  
   return res.data;
 };
 
@@ -66,7 +66,7 @@ export const get_ranking_data = async (board_id) => {
       .replace(/(" width="96").+(>)/gi, '');
     return item;
   });
-  console.log(res.data);
+  
   return res.data;
 };
 
@@ -77,6 +77,16 @@ export const get_bodybkcolor_data = async (board_id) => {
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  console.log(res.data);
   return res.data;
 };
+
+export const get_level_data = async (post_id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_level_data');
+  formData.append('post_id', post_id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  res.data.img_url = res.data.img_url.map((item) => BASE_URL + item);
+  return res.data;
+}
