@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {get_carousel_data} from '../../apis';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 
-const RecognitionTrain = () => {
+const RecognitionTrain = ({navigation}) => {
   const [recognitionTrain, setRecognitionTrain] = useState(0);
   useEffect(() => {
     async function get_rTrain() {
@@ -16,6 +16,7 @@ const RecognitionTrain = () => {
     <CustomCarouselSplit
       items={recognitionTrain}
       title="Spin, Speed Recognition Training >>>"
+      navigation={navigation}
     />
   );
 };

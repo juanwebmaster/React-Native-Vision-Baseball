@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {get_carousel_data} from '../../apis';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 
-const SchoolLevelCarousel = () => {
+const SchoolLevelCarousel = ({navigation}) => {
   const [schoolLevel, setSchoolLevel] = useState(0);
   useEffect(() => {
     async function get_slevel() {
@@ -16,6 +16,7 @@ const SchoolLevelCarousel = () => {
     <CustomCarouselSplit
       items={schoolLevel}
       title="College & Highschool Level >>>"
+      navigation={navigation}
     />
   );
 };

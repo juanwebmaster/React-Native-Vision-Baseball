@@ -55,13 +55,13 @@ const Home = ({name, navigation}) => {
             borderBottomWidth: 2,
             borderColor: '#888888',
           }}></View>
-        <TutorialsCarousel />
-        <PopPitchersCarousel />
-        <DrillsCarousel />
-        <ProLevelCarousel />
-        <SchoolLevelCarousel />
-        <YouthLevelCarousel />
-        <RecognitionTrainCarousel />
+        <TutorialsCarousel navigation={navigation} />
+        <PopPitchersCarousel navigation={navigation} />
+        <DrillsCarousel navigation={navigation} />
+        <ProLevelCarousel navigation={navigation} />
+        <SchoolLevelCarousel navigation={navigation} />
+        <YouthLevelCarousel navigation={navigation} />
+        <RecognitionTrainCarousel navigation={navigation} />
         <CalendarData />
         <FrequentUsers />
         <CustomFooter />

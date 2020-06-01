@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {get_carousel_data} from '../../apis';
 import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
 
-const DrillsCarousel = () => {
+const DrillsCarousel = ({navigation}) => {
   const [specializedDrills, setSpecializedDrills] = useState(0);
   useEffect(() => {
     async function get_drills() {
@@ -16,6 +16,7 @@ const DrillsCarousel = () => {
     <CustomCarouselSplit
       items={specializedDrills}
       title="Specialized Drills >>>"
+      navigation={navigation}
     />
   );
 };

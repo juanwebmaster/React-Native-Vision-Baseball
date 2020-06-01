@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {get_carousel_data} from '../../apis';
 import CustomCarousel from '_organisms/CustomCarousel';
 
-const PopPitchersCarousel = () => {
+const PopPitchersCarousel = ({navigation}) => {
   const [popPitchers, setPopPitchers] = useState(0);
   useEffect(() => {
     async function get_pitchers() {
@@ -12,7 +12,7 @@ const PopPitchersCarousel = () => {
     get_pitchers();
   }, []);
 
-  return <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" />;
+  return <CustomCarousel items={popPitchers} title="Most Popular Pitchers >>>" navigation={navigation} />;
 };
 
 export default PopPitchersCarousel;

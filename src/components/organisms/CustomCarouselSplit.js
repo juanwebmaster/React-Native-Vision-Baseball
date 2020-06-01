@@ -12,16 +12,20 @@ import {Card} from './Card';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { withTheme } from 'react-native-elements';
+import {withTheme} from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class CustomCarouselSplit extends React.Component {
-  clickCatItem = (id) => {
+  constructor(props) {
+    super(props);
+  }
+  handleClick = (id) => {
     const {navigation} = this.props;
-    if (navigation.state.routeName === 'CategoryShow') navigation.goBack();
-    navigation.navigate('CategoryShow', {id, keyword: ''});
+
+    navigation.navigate('SelectLevel', {post_id: id});
+    console.log('id=>', id);
   };
-  
+
   _moveToNext = () => {
     this._carousel.snapToNext();
   };
@@ -33,10 +37,13 @@ export default class CustomCarouselSplit extends React.Component {
   _renderItem = ({item, index}) => {
     return (
       <Card style={styles.cardContainerStyle}>
+        <TouchableOpacity
+          style={styles.snapBtn}
+          onPress={() => this.handleClick(item.post_id)}>
           <ImageBackground
             source={{uri: item.img_url}}
-            style={styles.imageBackgroundStyle}>
-          </ImageBackground>
+            style={styles.imageBackgroundStyle}></ImageBackground>
+        </TouchableOpacity>
       </Card>
     );
   };
@@ -67,10 +74,18 @@ export default class CustomCarouselSplit extends React.Component {
           />
           <View style={styles.snapBtnBox}>
             <TouchableOpacity style={styles.snapBtn} onPress={this._moveToPrev}>
-              <Icon name="angle-left" size={40} color={'rgba(255, 255, 255, 0.75)'} />
+              <Icon
+                name="angle-left"
+                size={40}
+                color={'rgba(255, 255, 255, 0.75)'}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={styles.snapBtn} onPress={this._moveToNext}>
-              <Icon name="angle-right" size={40} color={'rgba(255, 255, 255, 0.75)'}  />
+              <Icon
+                name="angle-right"
+                size={40}
+                color={'rgba(255, 255, 255, 0.75)'}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -83,7 +98,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     marginBottom: 30,
-    marginTop: 30
+    marginTop: 30,
   },
   titleBar: {
     width: '100%',
@@ -102,7 +117,7 @@ const styles = StyleSheet.create({
     padding: 3,
     alignItems: 'center',
   },
-  
+
   catName: {
     textAlign: 'center',
   },
