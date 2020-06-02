@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api_endpoint =
   'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php';
-const BASE_URL = 'https://appliedvisionbaseball.com/';
+const BASE_URL = 'http://localhost:8888/vision-baseball/';
 export const AuthenticateUser = async (email, password) => {
   const formData = new FormData();
   formData.append('action', 'authenticate_user');
@@ -17,13 +17,14 @@ export const AuthenticateUser = async (email, password) => {
 
 export const get_carousel_data = async (id) => {
   const formData = new FormData();
-  formData.append('action', 'get_carousel_data');
+  formData.append('action', 'get_carousel');
   formData.append('id', id);
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  const retValue = res.data.map((item) => BASE_URL + item);
-  return retValue;
+  res.data.map((item) => item.img_url = BASE_URL + item.img_url);
+  
+  return res.data;
 };
 
 export const get_user_data = async (id) => {
@@ -39,7 +40,7 @@ export const get_user_data = async (id) => {
 export const get_calendar_data = async (id) => {
   const formData = new FormData();
   formData.append('action', 'get_calendar_data');
-  formData.append('user_id', id);
+  formData.append('calendar_id', id);
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
@@ -65,6 +66,27 @@ export const get_ranking_data = async (board_id) => {
       .replace(/(" width="96").+(>)/gi, '');
     return item;
   });
-  console.log(res.data);
+  
   return res.data;
 };
+
+export const get_bodybkcolor_data = async (board_id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_bodybkcolor_data');
+  formData.append('board_id', board_id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  return res.data;
+};
+
+export const get_level_data = async (post_id) => {
+  const formData = new FormData();
+  formData.append('action', 'get_level_data');
+  formData.append('post_id', post_id);
+  const res = await axios.post(api_endpoint, formData, {
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
+  res.data.img_url = res.data.img_url.map((item) => BASE_URL + item);
+  return res.data;
+}

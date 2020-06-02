@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '_scenes/home';
 import StatusScreen from '_scenes/status';
 import LeaderBoardScreen from '_scenes/leaderboard';
@@ -10,8 +11,9 @@ import TutorialsScreen from '_scenes/tutorials';
 import MyAccountScreen from '_scenes/myaccount';
 import ModifyBillingScreen from '_scenes/modifybilling';
 import LogOutScreen from '_scenes/logout';
+import SelectLevel from '_components/organisms/SelectLevel';
 
-
+const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
   return (
@@ -64,7 +66,10 @@ function MyDrawer() {
 export default AppNavigation = () => {
   return (
     <NavigationContainer>
-      <MyDrawer />
+      <Stack.Navigator>
+        <Stack.Screen name="Member Area" component={MyDrawer} />
+        <Stack.Screen name="SelectLevel" component={SelectLevel} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

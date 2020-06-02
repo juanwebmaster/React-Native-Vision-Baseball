@@ -12,16 +12,16 @@ import {Card} from './Card';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {withTheme} from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-export default class CustomCarouselSplit extends React.Component {
+export default class SelectLevelCarousel extends React.Component {
   constructor(props) {
     super(props);
   }
   handleClick = (id) => {
     const {navigation} = this.props;
-    if (id) navigation.navigate('SelectLevel', {post_id: id});
+
+    //if (id) navigation.navigate('SelectLevel', {post_id:id});
     console.log('id=>', id);
   };
 
@@ -40,7 +40,7 @@ export default class CustomCarouselSplit extends React.Component {
           style={styles.snapBtn}
           onPress={() => this.handleClick(item.post_id)}>
           <ImageBackground
-            source={{uri: item.img_url}}
+            source={{uri: item}}
             style={styles.imageBackgroundStyle}></ImageBackground>
         </TouchableOpacity>
       </Card>
@@ -48,11 +48,12 @@ export default class CustomCarouselSplit extends React.Component {
   };
 
   render() {
-    if (!this.props.items.length) return null;
+    //if (!this.props.items.length) return null;
     return (
       <View style={styles.container}>
         <View style={styles.titleBar}>
-          <Text style={styles.title}>{this.props.title}</Text>
+        <Text style={styles.title}>{this.props.items.title}</Text>
+          <Text style={styles.content}>{this.props.items.content}</Text>
         </View>
         <View style={styles.slider}>
           <Carousel
@@ -60,7 +61,7 @@ export default class CustomCarouselSplit extends React.Component {
             ref={(c) => {
               this._carousel = c;
             }}
-            data={this.props.items}
+            data={this.props.items.img_url}
             renderItem={this._renderItem}
             sliderWidth={SCREEN_WIDTH}
             itemWidth={SCREEN_WIDTH / 2}
@@ -96,19 +97,23 @@ export default class CustomCarouselSplit extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginBottom: 30,
     marginTop: 30,
   },
   titleBar: {
-    width: '100%',
-
-    flexDirection: 'row',
+    padding: 20,
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  title: {
+  content: {
     fontSize: 20,
-    color: '#ffffff',
+    color: 'rgba(255,255,255,0.8)',
+    textAlign:'center',
+  },
+  title: {
+    fontSize: 70,
+    color: 'rgba(255,255,255,1)',
+    textAlign:'center',
   },
   label: {},
   slideItem: {
@@ -117,11 +122,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  catName: {
-    textAlign: 'center',
-  },
   slider: {
     justifyContent: 'center',
+    backgroundColor: '#222',
+    padding: 10,
   },
   snapBtnBox: {
     width: '100%',
@@ -142,7 +146,8 @@ const styles = StyleSheet.create({
   },
   imageBackgroundStyle: {
     width: SCREEN_WIDTH / 2.5,
-    height: 90,
+    height: 180,
     justifyContent: 'center',
+    alignItems:'center'
   },
 });

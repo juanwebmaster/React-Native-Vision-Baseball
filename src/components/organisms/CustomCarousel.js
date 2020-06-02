@@ -15,11 +15,15 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class CustomCarouselSplit extends React.Component {
-  clickCatItem = (id) => {
-    const {navigation} = this.props;
-    if (navigation.state.routeName === 'CategoryShow') navigation.goBack();
-    navigation.navigate('CategoryShow', {id, keyword: ''});
-  };
+    constructor (props) {
+      super(props);
+    }
+    handleClick = (id) => {
+      const {navigation} = this.props;
+
+      if (id) navigation.navigate('SelectLevel', {post_id:id});
+      console.log('id=>',id);
+    };
   
   _moveToNext = () => {
     this._carousel.snapToNext();
@@ -32,10 +36,12 @@ export default class CustomCarouselSplit extends React.Component {
   _renderItem = ({item, index}) => {
     return (
       <Card style={styles.cardContainerStyle}>
+        <TouchableOpacity style={styles.snapBtn} onPress={()=> this.handleClick(item.post_id)}>
           <ImageBackground
-            source={{uri: item}}
+            source={{uri: item.img_url}}
             style={styles.imageBackgroundStyle}>
           </ImageBackground>
+        </TouchableOpacity>
       </Card>
     );
   };
