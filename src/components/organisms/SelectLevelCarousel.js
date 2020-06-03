@@ -21,7 +21,7 @@ export default class SelectLevelCarousel extends React.Component {
   handleClick = (id) => {
     const {navigation} = this.props;
 
-    //if (id) navigation.navigate('SelectLevel', {post_id:id});
+    if (id) navigation.navigate('QuizScreen', {id:id});
     console.log('id=>', id);
   };
 
@@ -38,9 +38,9 @@ export default class SelectLevelCarousel extends React.Component {
       <Card style={styles.cardContainerStyle}>
         <TouchableOpacity
           style={styles.snapBtn}
-          onPress={() => this.handleClick(item.post_id)}>
+          onPress={() => this.handleClick(item.id)}>
           <ImageBackground
-            source={{uri: item}}
+            source={{uri: item.url}}
             style={styles.imageBackgroundStyle}></ImageBackground>
         </TouchableOpacity>
       </Card>
@@ -61,7 +61,7 @@ export default class SelectLevelCarousel extends React.Component {
             ref={(c) => {
               this._carousel = c;
             }}
-            data={this.props.items.img_url}
+            data={this.props.items.image}
             renderItem={this._renderItem}
             sliderWidth={SCREEN_WIDTH}
             itemWidth={SCREEN_WIDTH / 2}

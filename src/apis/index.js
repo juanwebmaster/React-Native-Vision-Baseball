@@ -22,6 +22,7 @@ export const get_carousel_data = async (id) => {
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
+  
   res.data.map((item) => item.img_url = BASE_URL + item.img_url);
   
   return res.data;
@@ -87,6 +88,8 @@ export const get_level_data = async (post_id) => {
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  res.data.img_url = res.data.img_url.map((item) => BASE_URL + item);
+  
+  res.data.image = res.data.image.map((item) => {item.url = BASE_URL + item.url; return item;});
+  console.log(res.data);
   return res.data;
 }
