@@ -12,7 +12,7 @@ import MyAccountScreen from '_scenes/myaccount';
 import ModifyBillingScreen from '_scenes/modifybilling';
 import LogOutScreen from '_scenes/logout';
 import SelectLevel from '_components/organisms/SelectLevel';
-
+import QuizScreen from '_components/organisms/QuizScreen';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
@@ -69,6 +69,7 @@ export default AppNavigation = () => {
       <Stack.Navigator>
         <Stack.Screen name="Member Area" component={MyDrawer} />
         <Stack.Screen name="SelectLevel" component={SelectLevel} />
+        <Stack.Screen name="QuizScreen" component={QuizScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
