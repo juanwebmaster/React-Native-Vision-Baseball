@@ -19,10 +19,10 @@ export default class CustomCarouselSplit extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleClick = (id) => {
+  handleClick = (item) => {
     const {navigation} = this.props;
-    if (id) navigation.navigate('SelectLevel', {post_id: id});
-    console.log('id=>', id);
+    if (item) navigation.navigate('SelectLevel', {data: item});
+    
   };
 
   _moveToNext = () => {
@@ -38,7 +38,7 @@ export default class CustomCarouselSplit extends React.Component {
       <Card style={styles.cardContainerStyle}>
         <TouchableOpacity
           style={styles.snapBtn}
-          onPress={() => this.handleClick(item.post_id)}>
+          onPress={() => this.handleClick(item)}>
           <ImageBackground
             source={{uri: item.img_url}}
             style={styles.imageBackgroundStyle}></ImageBackground>

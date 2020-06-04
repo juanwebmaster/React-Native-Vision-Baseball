@@ -18,11 +18,10 @@ export default class SelectLevelCarousel extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleClick = (id) => {
+  handleClick = (item) => {
     const {navigation} = this.props;
 
-    if (id) navigation.navigate('QuizScreen', {id:id});
-    console.log('id=>', id);
+    if (item) navigation.navigate('QuizScreen', {data: item});
   };
 
   _moveToNext = () => {
@@ -38,7 +37,7 @@ export default class SelectLevelCarousel extends React.Component {
       <Card style={styles.cardContainerStyle}>
         <TouchableOpacity
           style={styles.snapBtn}
-          onPress={() => this.handleClick(item.id)}>
+          onPress={() => this.handleClick(item)}>
           <ImageBackground
             source={{uri: item.url}}
             style={styles.imageBackgroundStyle}></ImageBackground>
@@ -51,44 +50,51 @@ export default class SelectLevelCarousel extends React.Component {
     //if (!this.props.items.length) return null;
     return (
       <View style={styles.container}>
-        <View style={styles.titleBar}>
-        <Text style={styles.title}>{this.props.items.title}</Text>
-          <Text style={styles.content}>{this.props.items.content}</Text>
-        </View>
-        <View style={styles.slider}>
-          <Carousel
-            key={'items'}
-            ref={(c) => {
-              this._carousel = c;
-            }}
-            data={this.props.items.image}
-            renderItem={this._renderItem}
-            sliderWidth={SCREEN_WIDTH}
-            itemWidth={SCREEN_WIDTH / 2}
-            loop={true}
-            activeSlideAlignment="start"
-            inactiveSlideOpacity={1}
-            inactiveSlideScale={1}
-            nestedScrollEnabled={true}
-            removeClippedSubviews={true}
-          />
-          <View style={styles.snapBtnBox}>
-            <TouchableOpacity style={styles.snapBtn} onPress={this._moveToPrev}>
-              <Icon
-                name="angle-left"
-                size={40}
-                color={'rgba(255, 255, 255, 0.75)'}
+        <ImageBackground
+            source={{uri: this.props.backgroundImage}}
+            style={{width:'100%',}}
+            >
+          <View style={{backgroundColor:'rgba(0,0,0, 0.7)'}}>
+            <View style={styles.titleBar}>
+            <Text style={styles.title}>{this.props.items.title}</Text>
+              <Text style={styles.content}>{this.props.items.content}</Text>
+            </View>
+            <View style={styles.slider}>
+              <Carousel
+                key={'items'}
+                ref={(c) => {
+                  this._carousel = c;
+                }}
+                data={this.props.items.image}
+                renderItem={this._renderItem}
+                sliderWidth={SCREEN_WIDTH}
+                itemWidth={SCREEN_WIDTH / 2}
+                loop={true}
+                activeSlideAlignment="start"
+                inactiveSlideOpacity={1}
+                inactiveSlideScale={1}
+                nestedScrollEnabled={true}
+                removeClippedSubviews={true}
               />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.snapBtn} onPress={this._moveToNext}>
-              <Icon
-                name="angle-right"
-                size={40}
-                color={'rgba(255, 255, 255, 0.75)'}
-              />
-            </TouchableOpacity>
+              <View style={styles.snapBtnBox}>
+                <TouchableOpacity style={styles.snapBtn} onPress={this._moveToPrev}>
+                  <Icon
+                    name="angle-left"
+                    size={40}
+                    color={'rgba(255, 255, 255, 0.75)'}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.snapBtn} onPress={this._moveToNext}>
+                  <Icon
+                    name="angle-right"
+                    size={40}
+                    color={'rgba(255, 255, 255, 0.75)'}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
           </View>
-        </View>
+        </ImageBackground>
       </View>
     );
   }
@@ -97,7 +103,7 @@ export default class SelectLevelCarousel extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginTop: 30,
+    
   },
   titleBar: {
     padding: 20,
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
   },
   content: {
     fontSize: 20,
-    color: 'rgba(255,255,255,0.8)',
+    color: 'rgba(255,255,255,1)',
     textAlign:'center',
   },
   title: {
@@ -124,6 +130,7 @@ const styles = StyleSheet.create({
 
   slider: {
     justifyContent: 'center',
+    
     backgroundColor: '#222',
     padding: 10,
   },
