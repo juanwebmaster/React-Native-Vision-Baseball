@@ -18,11 +18,10 @@ export default class SelectLevelCarousel extends React.Component {
   constructor(props) {
     super(props);
   }
-  handleClick = (id) => {
+  handleClick = (item) => {
     const {navigation} = this.props;
 
-    if (id) navigation.navigate('QuizScreen', {id:id});
-    console.log('id=>', id);
+    if (item) navigation.navigate('QuizScreen', {data: item});
   };
 
   _moveToNext = () => {
@@ -38,7 +37,7 @@ export default class SelectLevelCarousel extends React.Component {
       <Card style={styles.cardContainerStyle}>
         <TouchableOpacity
           style={styles.snapBtn}
-          onPress={() => this.handleClick(item.id)}>
+          onPress={() => this.handleClick(item)}>
           <ImageBackground
             source={{uri: item.url}}
             style={styles.imageBackgroundStyle}></ImageBackground>

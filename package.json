@@ -23,6 +23,7 @@
     "react-native-gesture-handler": "^1.4.1",
     "react-native-hamburger": "^0.0.2",
     "react-native-image-slider-box": "^1.0.12",
+    "react-native-jw-media-player": "^0.1.46",
     "react-native-loading-spinner-overlay": "^1.1.0",
     "react-native-navigation-bar": "^0.2.1",
     "react-native-orientation": "^3.1.3",
