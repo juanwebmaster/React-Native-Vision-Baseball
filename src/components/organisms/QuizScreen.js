@@ -55,7 +55,7 @@ const QuizScreen = ({route, navigation}) => {
 
   const onIdle = () => {
     setIsPlaying(false);
-    const timerId = setInterval(() => {setProgress(progressRef.current + 0.2); console.log(progressRef.current)}, 500);
+    const timerId = setInterval(() => {setProgress(progressRef.current + 0.1); console.log(progressRef.current)}, 200);
     // after 5 seconds stop
     
     setTimeout(() => { clearInterval(timerId);  }, 3000);
@@ -126,7 +126,7 @@ const QuizScreen = ({route, navigation}) => {
   const YesButton = ({title}) => {
     return (
       <TouchableOpacity style={{backgroundColor:"#7ed957", flex:1, margin:10, padding:10, justifyContent:'center', alignItems:'center', borderRadius:8}} >
-      <Text style={{color:'#ffffff'}}>{title}</Text>
+      <Text style={{color:'#ffffff',fontSize:17, paddingLeft:20, paddingRight:20, fontWeight:'900'}}>{title}</Text>
       </TouchableOpacity>
     )
   }
@@ -135,7 +135,7 @@ const QuizScreen = ({route, navigation}) => {
     return (
       
       <TouchableOpacity  style={{backgroundColor:"#ff5757", flex:1, margin:10, padding:10, justifyContent:'center', alignItems:'center', borderRadius:8}} >
-      <Text style={{color:'#ffffff',}}>{title}</Text>
+      <Text style={{color:'#ffffff',fontSize:17, paddingLeft:20, paddingRight:20, fontWeight:'900'}}>{title}</Text>
       </TouchableOpacity>
     )
   }
@@ -154,8 +154,15 @@ const QuizScreen = ({route, navigation}) => {
   const AnswerView = () => {
     return (
       <View style={{marginRight:50, flex:1, alignItems:'center'}}>
-        <View>
-          <Text>{}</Text>
+        <View style={{flexDirection:'row', alignItems:'center', width:400, justifyContent:'space-between', paddingLeft:20}}>
+          <View>
+            <Text style={{color:'#ffffff',fontSize:20}}>{index + '/' + data.question_ids.length}</Text>
+            <Text style={{color:'#ffffff',fontSize:17}}>Pitch Count</Text>
+          </View>
+          
+          <TouchableOpacity  style={{backgroundColor:'#1E73BE', margin:10, padding:10, justifyContent:'center', alignItems:'center', borderRadius:8}} >
+            <Text style={{color:'#ffffff',fontSize:17, paddingLeft:20, paddingRight:20, fontWeight:'900'}}>Next</Text>
+          </TouchableOpacity>
         </View>
         {answers.map(item => <Answer answer={item} />)}
         <Text style={{color:'#ffffff', fontWeight:'700',fontSize:17}}>TIMER</Text>
