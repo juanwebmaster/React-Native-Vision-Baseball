@@ -17,19 +17,21 @@ const QuizScreen = ({route, navigation}) => {
   const [currentOrientation, setCurrentOrientation] = useState(Orientation.getInitialOrientation());
   //   const [levelData, setLevelData] = useState({});
   const player = useRef(null);
-
+  console.log(data.question_ids);
   const handleOrientation = (orientation) => {
     setCurrentOrientation(orientation);
   };
+  const BASE_IMAGE_URL = 'https://content.jwplatform.com/v2/media/' + data.question_ids[0].url + '/poster.jpg';
+  const BASE_VIDEO_URL = 'https://content.jwplatform.com/manifests/' + data.question_ids[0].url + '.m3u8';
   const playlistItem= {
     title: '',
     mediaId: '1',
-    image: '',
+    image: BASE_IMAGE_URL,
     desc: '',
     time: 1,
-    file: 'https://content.jwplatform.com/manifests/JyTZpvdi.m3u8',
+    file: BASE_VIDEO_URL,
 //    file: 'http://file.com/file.mp3',
-    autostart: true,
+    autostart: false,
     controls: true,
     repeat: false,
     displayDescription: true,
@@ -60,26 +62,31 @@ const QuizScreen = ({route, navigation}) => {
   };
   const QuizView = () => {
     return (
-      <View style={{ flex: 1 }}>
-        <Text>{data.question_ids}</Text>
-         <JWPlayer
-          ref={player}
-          style={styles.player}
-          playlistItem={playlistItem} // Recommended - pass the playlistItem as a prop into the player
-          // playlist={[playlistItem]}
-          //onBeforePlay={() => this.onBeforePlay()}
-          onPlay={()=> {console.log('Playing')}}
-          //onPause={() => this.onPause()}
-          onIdle={() => console.log("onIdle")}
-          //onPlaylistItem={event => this.onPlaylistItem(event)}
-          //onSetupPlayerError={event => this.onPlayerError(event)}
-          //onPlayerError={event => this.onPlayerError(event)}
-          //onBuffer={() => this.onBuffer()}
-          //onTime={event => this.onTime(event)}
-          //onFullScreen={() => this.onFullScreen()}
-          //onFullScreenExit={() => this.onFullScreenExit()}
-        />
+      <View style={{flex:1, flexDirection:'row'}}>
+        <View style={{ flex: 1, width:'50%' }}>
+          <JWPlayer
+            ref={player}
+            style={styles.player}
+            playlistItem={playlistItem} // Recommended - pass the playlistItem as a prop into the player
+            // playlist={[playlistItem]}
+            //onBeforePlay={() => this.onBeforePlay()}
+            onPlay={()=> {console.log('Playing')}}
+            //onPause={() => this.onPause()}
+            onIdle={() => console.log("onIdle")}
+            //onPlaylistItem={event => this.onPlaylistItem(event)}
+            //onSetupPlayerError={event => this.onPlayerError(event)}
+            //onPlayerError={event => this.onPlayerError(event)}
+            //onBuffer={() => this.onBuffer()}
+            //onTime={event => this.onTime(event)}
+            //onFullScreen={() => this.onFullScreen()}
+            //onFullScreenExit={() => this.onFullScreenExit()}
+          />
+        </View>
+        <View style={{ flex: 1, width:'50%', backgroundColor: '#333333',}}>
+          <Text>123</Text>
+        </View>
       </View>
+      
       
     )
   }
@@ -107,6 +114,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    
   },
   sliderContainer: {
     backgroundColor: 'rgb(0,0,0)',
@@ -133,6 +141,7 @@ const styles = StyleSheet.create({
   },
   player: {
     flex: 1,
+    width: '100%',
   }
 });
 export default QuizScreen;

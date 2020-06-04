@@ -8,12 +8,12 @@ import {Header} from 'react-native-elements';
 import HeaderIcon from '_atoms/HeaderIcon';
 import CustomFooter from '_organisms/CustomFooter';
 const SelectLevel = ({route, navigation}) => {
-  const {post_id} = route.params;
+  const {data} = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [levelData, setLevelData] = useState({});
   useEffect(() => {
     async function getLevelData() {
-      const lData = await get_level_data(post_id);
+      const lData = await get_level_data(data.post_id);
       setLevelData(lData);
       setIsLoading(false);
     }
@@ -37,6 +37,7 @@ const SelectLevel = ({route, navigation}) => {
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
         <SelectLevelCarousel
           items={levelData}
+          backgroundImage={data.img_url}
           //title="College & Highschool Level >>>"
           navigation={navigation}
           style = {styles.sliderContainer}
