@@ -17,7 +17,7 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import ProLevelCarousel from '_organisms/ProLevelCarousel';
 import SchoolLevelCarousel from '_organisms/SchoolLevelCarousel';
 import YouthLevelCarousel from '_organisms/YouthLevelCarousel';
-
+import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
 const Home = ({name, navigation}) => {
   
   const [bkColor, setBkColor] = useState('');
@@ -33,6 +33,7 @@ const Home = ({name, navigation}) => {
 
   return (
     <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}>
+      <PrefersHomeIndicatorAutoHidden />
       <Spinner
         visible={isLoading}
         textContent={'Loading...'}

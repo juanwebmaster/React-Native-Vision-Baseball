@@ -1,5 +1,6 @@
 //import liraries
 import React, {useEffect, Component} from 'react';
+import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
 import {
   View,
   Text,
@@ -14,6 +15,7 @@ const LoginScreen = ({setLoggedIn}) => {
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <PrefersHomeIndicatorAutoHidden />
       <View style={styles.loginContainer}>
         <Image
           resizeMode="contain"

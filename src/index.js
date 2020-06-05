@@ -3,7 +3,7 @@ import Login from '_scenes/login';
 import Home from '_scenes/home';
 import AppNavigation from '_navigations/AppNavigation';
 import SplashScreen from 'react-native-splash-screen';
-const App = () => {
+const App = () => {  
   setInterval(() => {
     SplashScreen.hide();
   }, 1000);
