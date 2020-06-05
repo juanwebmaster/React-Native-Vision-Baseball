@@ -234,6 +234,8 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
   - React-jsinspector (0.62.2)
+  - react-native-home-indicator (0.2.5):
+    - React
   - react-native-jw-media-player (0.1.46):
     - JWPlayer-SDK
     - React
@@ -351,6 +353,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-home-indicator (from `../node_modules/react-native-home-indicator`)
   - react-native-jw-media-player (from `../node_modules/react-native-jw-media-player/ios`)
   - react-native-orientation (from `../node_modules/react-native-orientation`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -417,6 +420,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-home-indicator:
+    :path: "../node_modules/react-native-home-indicator"
   react-native-jw-media-player:
     :path: "../node_modules/react-native-jw-media-player/ios"
   react-native-orientation:
@@ -483,6 +488,7 @@ SPEC CHECKSUMS:
   React-jsi: b6dc94a6a12ff98e8877287a0b7620d365201161
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
+  react-native-home-indicator: 05a1da3994ce61eccc1aca0dc2033c1c0f9dce99
   react-native-jw-media-player: 83b7ced40aa6be90875842960a61d33e1c56b4a1
   react-native-orientation: f1caf84d65f1a4fd4511a18f2b924e634ad7a628
   react-native-safe-area-context: 9d9640a9085014864052e38496fc1dfde0b93974

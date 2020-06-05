@@ -22,6 +22,7 @@
     "react-native-elements": "^2.0.0",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-hamburger": "^0.0.2",
+    "react-native-home-indicator": "^0.2.5",
     "react-native-image-slider-box": "^1.0.12",
     "react-native-jw-media-player": "^0.1.46",
     "react-native-loading-spinner-overlay": "^1.1.0",

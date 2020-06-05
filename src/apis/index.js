@@ -1,8 +1,9 @@
 import axios from 'axios';
-
-const api_endpoint =
-  'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php';
-const BASE_URL = 'http://localhost:8888/vision-baseball/';
+const LOCAL_ADDRESS = 'http://localhost:8888/vision-baseball/';
+const SERVER_ADDRESS = 'https://appliedvisionbaseball.com/';
+const api_endpoint = SERVER_ADDRESS +
+  'wp-admin/admin-ajax.php';
+const BASE_URL = SERVER_ADDRESS;
 export const AuthenticateUser = async (email, password) => {
   const formData = new FormData();
   formData.append('action', 'authenticate_user');
