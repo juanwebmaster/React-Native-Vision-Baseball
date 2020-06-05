@@ -43,7 +43,7 @@ const Home = ({name, navigation}) => {
         rightComponent={{
           icon: 'menu',
           color: '#fff',
-          height: '150%',
+          
         }}
         leftComponent={HeaderIcon}
       />
