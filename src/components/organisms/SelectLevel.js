@@ -7,16 +7,20 @@ import {StyleSheet, ScrollView} from 'react-native';
 import {Header} from 'react-native-elements';
 import HeaderIcon from '_atoms/HeaderIcon';
 import CustomFooter from '_organisms/CustomFooter';
+import Orientation from 'react-native-orientation-locker';
+import { StackActions } from "react-navigation";
 const SelectLevel = ({route, navigation}) => {
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [levelData, setLevelData] = useState({});
+  
   useEffect(() => {
     async function getLevelData() {
       const lData = await get_level_data(data.post_id);
       setLevelData(lData);
       setIsLoading(false);
     }
+    Orientation.lockToPortrait();
     getLevelData();
   }, []);
   return (
@@ -40,7 +44,7 @@ const SelectLevel = ({route, navigation}) => {
           backgroundImage={data.img_url}
           //title="College & Highschool Level >>>"
           navigation={navigation}
-          style = {styles.sliderContainer}
+          style={styles.sliderContainer}
         />
         <CustomFooter />
       </ScrollView>
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(0,0,0)',
   },
   scrollView: {
-    backgroundColor: 'rgba(0,0,0,0.8)'
+    backgroundColor: 'rgba(0,0,0,0.8)',
   },
   imageBackgroundStyle: {
     height: 30,

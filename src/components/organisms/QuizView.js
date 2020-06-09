@@ -9,7 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import JWPlayer from 'react-native-jw-media-player';
-
+import Video from 'react-native-video';
 import {Overlay} from 'react-native-elements';
 
 const BASE_IMAGE_URL = 'https://content.jwplatform.com/v2/media/';

@@ -5,21 +5,23 @@ import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
 import { Button } from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
-import Orientation from 'react-native-orientation';
 import QuizView from '_components/organisms/QuizView'
-
+import Orientation from 'react-native-orientation-locker';
 const QuizScreen = ({route, navigation}) => {
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(false);
   const [started, setStarted] = useState(false);
-  const [currentOrientation, setCurrentOrientation] = useState(Orientation.getInitialOrientation());
+  //const [currentOrientation, setCurrentOrientation] = useState(Orientation.getInitialOrientation());
   const handleOrientation = (orientation) => {
     setCurrentOrientation(orientation);
   };
   
   useEffect(() => {
-    Orientation.addOrientationListener(handleOrientation);
+    //Orientation.addOrientationListener(handleOrientation);
+    Orientation.lockToLandscape();
   }, []);
+  
+  
 
   const handleClick = () => {
     setStarted(true);
@@ -33,25 +35,15 @@ const QuizScreen = ({route, navigation}) => {
       </View>
     );
   };
-  const PortraitView = () => {
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <Image
-          style={{width: 300, height: 300}}
-          source={require('../../assets/images/rotate.png')}></Image>
-        <Text style={{fontSize: 30}}>Please Rotate your Device</Text>
-      </View>
-    );
-  };
 
   
   return (
     <View style={styles.container}>
       <PrefersHomeIndicatorAutoHidden />
       
-      {currentOrientation === 'PORTRAIT' && <PortraitView />}
-      {currentOrientation === 'LANDSCAPE' && started && <QuizView data={data}/>}
-      {currentOrientation === 'LANDSCAPE' && !started && <LandScapeView />}
+      
+      {started && <QuizView data={data}/>}
+      {!started && <LandScapeView />}
       <Spinner
         visible={isLoading}
         textContent={'Loading...'}
@@ -92,7 +84,8 @@ const styles = StyleSheet.create({
   },
   player: {
     flex: 1,
-    width: '100%',
+    width: '50%',
+    
     justifyContent:'center',
     alignItems:'center',
   }

@@ -18,6 +18,8 @@ import ProLevelCarousel from '_organisms/ProLevelCarousel';
 import SchoolLevelCarousel from '_organisms/SchoolLevelCarousel';
 import YouthLevelCarousel from '_organisms/YouthLevelCarousel';
 import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
+import Orientation from 'react-native-orientation-locker';
+
 const Home = ({name, navigation}) => {
   
   const [bkColor, setBkColor] = useState('');
@@ -28,6 +30,7 @@ const Home = ({name, navigation}) => {
       setBkColor(bColor);
       setIsLoading(false);
     }
+    Orientation.lockToPortrait();
     get_color();
   }, []);
 
