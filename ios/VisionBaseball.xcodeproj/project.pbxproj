@@ -17,9 +17,8 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* VisionBaseballTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* VisionBaseballTests.m */; };
-		3E22537806ADF98FC341C41B /* libPods-VisionBaseball-VisionBaseballTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E774DCF347413C7D912409E /* libPods-VisionBaseball-VisionBaseballTests.a */; };
 		4656BF148B8F4D72B92EED1A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C530426CD8D4CECBCCC7EC9 /* Zocial.ttf */; };
-		572D2A5D501239F1B754C105 /* libPods-VisionBaseball-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 748CAECFD590EBD69F15D4CE /* libPods-VisionBaseball-tvOS.a */; };
+		524D39484FEF0540EF80CA07 /* libPods-VisionBaseball-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0821A43439DEAE36CD66F9CF /* libPods-VisionBaseball-tvOS.a */; };
 		5EBA80054ABA47EAAC78DB1B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D72F7DB21F224BAB9DF6E876 /* rubicon-icon-font.ttf */; };
 		60ECDA36F50946B985A83734 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 678EC6EE2793433C8268B0BE /* Roboto_medium.ttf */; };
 		6466CB4AECF64E86B08B11FD /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91AEF1242F1341D8B28A4019 /* Feather.ttf */; };
@@ -28,16 +27,17 @@
 		8EF59D7184E24C47B184B80A /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69007B966AEF49F781C44477 /* MaterialCommunityIcons.ttf */; };
 		940E7D6B557F4292BE843483 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 040CDCC76461469F8355B99D /* SimpleLineIcons.ttf */; };
 		96E496BB864B41D9A2B9599C /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6FEFA7A30EA74BD48813610E /* EvilIcons.ttf */; };
+		9AC5EFC9EA8974EBF322D4D2 /* libPods-VisionBaseball.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C11A4745075A369C6BE8CDB6 /* libPods-VisionBaseball.a */; };
 		A4212302EF22494281B191FA /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70A6DFA94CAD4EDDAA2CCEC4 /* Foundation.ttf */; };
 		ACBC257A5ADF442D886A907D /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6C3733BCF6E46ECA03AB89F /* Ionicons.ttf */; };
-		ACF492FC7BFDD00A2CADFBE3 /* libPods-VisionBaseball-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4DD17B3B0BE19BD41A8A41F /* libPods-VisionBaseball-tvOSTests.a */; };
 		AE0EA1FAD60E4CE484D49EF0 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DBF7E10D9E7949669D122EB5 /* Entypo.ttf */; };
 		AE74847AE9D24643BFD7CA05 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EEB5EE510AB4CE1A85537EB /* Octicons.ttf */; };
 		B51438E17D70466CA0188485 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E68445C0B98E465B85DA99B8 /* FontAwesome5_Regular.ttf */; };
 		C259A311FFD24FF2892CF24E /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA47FB29E364BB0BC3BDBAB /* FontAwesome5_Solid.ttf */; };
+		C8E88C0B24AC8140C8384F64 /* libPods-VisionBaseball-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0071D51F99C4E6226F275A4E /* libPods-VisionBaseball-tvOSTests.a */; };
+		CA749334E3812178D6C48205 /* libPods-VisionBaseball-VisionBaseballTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7491DE249BFC9ED67D2B2F1 /* libPods-VisionBaseball-VisionBaseballTests.a */; };
 		D11E152A60874D8A8D0B019D /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63C7040DFB744BAB93CB132D /* AntDesign.ttf */; };
 		DB7DED996C574816935D3476 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 248367E25E25410B8A8AC0B8 /* FontAwesome.ttf */; };
-		E5D3FA1C30EA28DF2E51BFDB /* libPods-VisionBaseball.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC43A7B5D79CC765E4F7DC83 /* libPods-VisionBaseball.a */; };
 		E8F26D3A616C4A388A0790DD /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF0F1272083145ED8261A446 /* Fontisto.ttf */; };
 /* End PBXBuildFile section */
 
@@ -59,12 +59,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0071D51F99C4E6226F275A4E /* libPods-VisionBaseball-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00E356EE1AD99517003FC87E /* VisionBaseballTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionBaseballTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* VisionBaseballTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisionBaseballTests.m; sourceTree = "<group>"; };
+		012A912D93ED803141892ECE /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOSTests/Pods-VisionBaseball-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		02F9BF346AE24DF88A438BC6 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		040CDCC76461469F8355B99D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		0821A43439DEAE36CD66F9CF /* libPods-VisionBaseball-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* VisionBaseball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionBaseball.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = VisionBaseball/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = VisionBaseball/AppDelegate.m; sourceTree = "<group>"; };
@@ -72,40 +75,37 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = VisionBaseball/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VisionBaseball/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = VisionBaseball/main.m; sourceTree = "<group>"; };
-		1B783BBE87B3D37C7D2A3903 /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOSTests/Pods-VisionBaseball-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FC547D2603C12F6731C8683 /* Pods-VisionBaseball-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOS.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOS/Pods-VisionBaseball-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		248367E25E25410B8A8AC0B8 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* VisionBaseball-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VisionBaseball-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* VisionBaseball-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VisionBaseball-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3660B064F646DCB83A2927 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		4EEB5EE510AB4CE1A85537EB /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		5E2F4BA1C2EE228D78D39AD9 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOSTests/Pods-VisionBaseball-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		63C7040DFB744BAB93CB132D /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/native-base/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		678EC6EE2793433C8268B0BE /* Roboto_medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto_medium.ttf; path = "../node_modules/native-base/Fonts/Roboto_medium.ttf"; sourceTree = "<group>"; };
 		69007B966AEF49F781C44477 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		6C1662C7EEAC43DA8EC93163 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		6FEFA7A30EA74BD48813610E /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		70A6DFA94CAD4EDDAA2CCEC4 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		748CAECFD590EBD69F15D4CE /* libPods-VisionBaseball-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E8FBB03DFFEF7FCF1A31BC0 /* Pods-VisionBaseball-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOS/Pods-VisionBaseball-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8C530426CD8D4CECBCCC7EC9 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		91AEF1242F1341D8B28A4019 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		9E03418349E895220DB7D4A6 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-VisionBaseballTests.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests.release.xcconfig"; sourceTree = "<group>"; };
-		9E774DCF347413C7D912409E /* libPods-VisionBaseball-VisionBaseballTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-VisionBaseballTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97208CEBFE7AB00E6A8F6D68 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-VisionBaseballTests.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD62AD6E24887ED2008261D3 /* JWPlayer_iOS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JWPlayer_iOS_SDK.framework; path = "../../../Downloads/jwplayer-ios-sdk-3.14.2+120/JWPlayer_iOS_SDK.framework"; sourceTree = "<group>"; };
-		B4DD17B3B0BE19BD41A8A41F /* libPods-VisionBaseball-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C3733BCF6E46ECA03AB89F /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/native-base/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		C984E089BCE6C5CD761F1DCB /* Pods-VisionBaseball-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOS.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOS/Pods-VisionBaseball-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		C11A4745075A369C6BE8CDB6 /* libPods-VisionBaseball.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C126F13E86E23B73B682BD23 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOSTests/Pods-VisionBaseball-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		C7491DE249BFC9ED67D2B2F1 /* libPods-VisionBaseball-VisionBaseballTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball-VisionBaseballTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9CEAD08D90E7C32726BE81D /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CDA47FB29E364BB0BC3BDBAB /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		CEA576F1EC08B929943205DD /* Pods-VisionBaseball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball/Pods-VisionBaseball.release.xcconfig"; sourceTree = "<group>"; };
+		CFCE9A620750D4C89C6D9083 /* Pods-VisionBaseball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball/Pods-VisionBaseball.debug.xcconfig"; sourceTree = "<group>"; };
 		D72F7DB21F224BAB9DF6E876 /* rubicon-icon-font.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "rubicon-icon-font.ttf"; path = "../node_modules/native-base/Fonts/rubicon-icon-font.ttf"; sourceTree = "<group>"; };
-		D7B035E008C89A4D2D793419 /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DBA56F39383FB4D1442F501E /* Pods-VisionBaseball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball.release.xcconfig"; path = "Target Support Files/Pods-VisionBaseball/Pods-VisionBaseball.release.xcconfig"; sourceTree = "<group>"; };
 		DBF7E10D9E7949669D122EB5 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		DF0F1272083145ED8261A446 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		E68445C0B98E465B85DA99B8 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/native-base/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F6E1BA06D10B477721A85183 /* Pods-VisionBaseball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball/Pods-VisionBaseball.debug.xcconfig"; sourceTree = "<group>"; };
-		FC43A7B5D79CC765E4F7DC83 /* libPods-VisionBaseball.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionBaseball.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC32FD6E834C07A923E5587C /* Pods-VisionBaseball-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionBaseball-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-VisionBaseball-tvOS/Pods-VisionBaseball-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E22537806ADF98FC341C41B /* libPods-VisionBaseball-VisionBaseballTests.a in Frameworks */,
+				CA749334E3812178D6C48205 /* libPods-VisionBaseball-VisionBaseballTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D3FA1C30EA28DF2E51BFDB /* libPods-VisionBaseball.a in Frameworks */,
+				9AC5EFC9EA8974EBF322D4D2 /* libPods-VisionBaseball.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572D2A5D501239F1B754C105 /* libPods-VisionBaseball-tvOS.a in Frameworks */,
+				524D39484FEF0540EF80CA07 /* libPods-VisionBaseball-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACF492FC7BFDD00A2CADFBE3 /* libPods-VisionBaseball-tvOSTests.a in Frameworks */,
+				C8E88C0B24AC8140C8384F64 /* libPods-VisionBaseball-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,10 +181,10 @@
 				AD62AD6E24887ED2008261D3 /* JWPlayer_iOS_SDK.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				FC43A7B5D79CC765E4F7DC83 /* libPods-VisionBaseball.a */,
-				9E774DCF347413C7D912409E /* libPods-VisionBaseball-VisionBaseballTests.a */,
-				748CAECFD590EBD69F15D4CE /* libPods-VisionBaseball-tvOS.a */,
-				B4DD17B3B0BE19BD41A8A41F /* libPods-VisionBaseball-tvOSTests.a */,
+				C11A4745075A369C6BE8CDB6 /* libPods-VisionBaseball.a */,
+				C7491DE249BFC9ED67D2B2F1 /* libPods-VisionBaseball-VisionBaseballTests.a */,
+				0821A43439DEAE36CD66F9CF /* libPods-VisionBaseball-tvOS.a */,
+				0071D51F99C4E6226F275A4E /* libPods-VisionBaseball-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -252,14 +252,14 @@
 		FA933A87F72AF47D4BBE2E4A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F6E1BA06D10B477721A85183 /* Pods-VisionBaseball.debug.xcconfig */,
-				CEA576F1EC08B929943205DD /* Pods-VisionBaseball.release.xcconfig */,
-				D7B035E008C89A4D2D793419 /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */,
-				9E03418349E895220DB7D4A6 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */,
-				7E8FBB03DFFEF7FCF1A31BC0 /* Pods-VisionBaseball-tvOS.debug.xcconfig */,
-				C984E089BCE6C5CD761F1DCB /* Pods-VisionBaseball-tvOS.release.xcconfig */,
-				1B783BBE87B3D37C7D2A3903 /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */,
-				5E2F4BA1C2EE228D78D39AD9 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */,
+				CFCE9A620750D4C89C6D9083 /* Pods-VisionBaseball.debug.xcconfig */,
+				DBA56F39383FB4D1442F501E /* Pods-VisionBaseball.release.xcconfig */,
+				C9CEAD08D90E7C32726BE81D /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */,
+				97208CEBFE7AB00E6A8F6D68 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */,
+				FC32FD6E834C07A923E5587C /* Pods-VisionBaseball-tvOS.debug.xcconfig */,
+				1FC547D2603C12F6731C8683 /* Pods-VisionBaseball-tvOS.release.xcconfig */,
+				012A912D93ED803141892ECE /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */,
+				C126F13E86E23B73B682BD23 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -271,11 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "VisionBaseballTests" */;
 			buildPhases = (
-				8CDF64767982948FD8517AD9 /* [CP] Check Pods Manifest.lock */,
+				AC346E34E4695A11E2B3B54E /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				AFB820CAAA7E9BA5C46753AA /* [CP] Embed Pods Frameworks */,
+				E617E6D974F00A6C5BB9C0B3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -291,13 +291,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "VisionBaseball" */;
 			buildPhases = (
-				B2D08922170D1729184ECC4E /* [CP] Check Pods Manifest.lock */,
+				AC235A992C5D6D2B66A98A7F /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				BF0B0B8FF449633BB99DB21B /* [CP] Embed Pods Frameworks */,
+				DD0990C2DC335B81223D76DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -312,7 +312,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "VisionBaseball-tvOS" */;
 			buildPhases = (
-				78228B4F19F9DA81569A3947 /* [CP] Check Pods Manifest.lock */,
+				A1D68D679A95318042B0BF3B /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -332,7 +332,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "VisionBaseball-tvOSTests" */;
 			buildPhases = (
-				26FF0FBEFC7D74C66A12B095 /* [CP] Check Pods Manifest.lock */,
+				1F42254C4F9C690A8966B32C /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -463,7 +463,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		26FF0FBEFC7D74C66A12B095 /* [CP] Check Pods Manifest.lock */ = {
+		1F42254C4F9C690A8966B32C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -499,7 +499,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		78228B4F19F9DA81569A3947 /* [CP] Check Pods Manifest.lock */ = {
+		A1D68D679A95318042B0BF3B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -521,47 +521,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8CDF64767982948FD8517AD9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VisionBaseball-VisionBaseballTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFB820CAAA7E9BA5C46753AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests-frameworks.sh",
-				"${PODS_ROOT}/JWPlayer-SDK/JWPlayer_iOS_SDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWPlayer_iOS_SDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B2D08922170D1729184ECC4E /* [CP] Check Pods Manifest.lock */ = {
+		AC235A992C5D6D2B66A98A7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -583,7 +543,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BF0B0B8FF449633BB99DB21B /* [CP] Embed Pods Frameworks */ = {
+		AC346E34E4695A11E2B3B54E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VisionBaseball-VisionBaseballTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD0990C2DC335B81223D76DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -599,6 +581,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionBaseball/Pods-VisionBaseball-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E617E6D974F00A6C5BB9C0B3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests-frameworks.sh",
+				"${PODS_ROOT}/JWPlayer-SDK/JWPlayer_iOS_SDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWPlayer_iOS_SDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionBaseball-VisionBaseballTests/Pods-VisionBaseball-VisionBaseballTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -706,7 +706,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7B035E008C89A4D2D793419 /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */;
+			baseConfigurationReference = C9CEAD08D90E7C32726BE81D /* Pods-VisionBaseball-VisionBaseballTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -730,7 +730,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E03418349E895220DB7D4A6 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */;
+			baseConfigurationReference = 97208CEBFE7AB00E6A8F6D68 /* Pods-VisionBaseball-VisionBaseballTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -751,7 +751,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F6E1BA06D10B477721A85183 /* Pods-VisionBaseball.debug.xcconfig */;
+			baseConfigurationReference = CFCE9A620750D4C89C6D9083 /* Pods-VisionBaseball.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -809,7 +809,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEA576F1EC08B929943205DD /* Pods-VisionBaseball.release.xcconfig */;
+			baseConfigurationReference = DBA56F39383FB4D1442F501E /* Pods-VisionBaseball.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -861,7 +861,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E8FBB03DFFEF7FCF1A31BC0 /* Pods-VisionBaseball-tvOS.debug.xcconfig */;
+			baseConfigurationReference = FC32FD6E834C07A923E5587C /* Pods-VisionBaseball-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -890,7 +890,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C984E089BCE6C5CD761F1DCB /* Pods-VisionBaseball-tvOS.release.xcconfig */;
+			baseConfigurationReference = 1FC547D2603C12F6731C8683 /* Pods-VisionBaseball-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -919,7 +919,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1B783BBE87B3D37C7D2A3903 /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 012A912D93ED803141892ECE /* Pods-VisionBaseball-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -947,7 +947,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E2F4BA1C2EE228D78D39AD9 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = C126F13E86E23B73B682BD23 /* Pods-VisionBaseball-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
