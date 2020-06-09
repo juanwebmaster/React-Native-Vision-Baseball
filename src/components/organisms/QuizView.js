@@ -27,7 +27,7 @@ const QuizView = ({data}) => {
   const [answers, setAnswers] = useState(data.question_ids[questionId].answers);
   const [isPlaying, setIsPlaying] = useState('');
   const [selAnswer, setSelAnswer] = useState('');
-
+  const [isPaused, setIsPaused] = useState(true);
   const player = useRef(null);
   const [visible, setVisible] = useState(true);
   const handlePressVideo = () => {
@@ -68,7 +68,17 @@ const QuizView = ({data}) => {
   const onIdle = () => {
     console.log('123');
     setIsPlaying(false);
+    setIsPaused(true);
     console.log(isPlaying);
+    questionId++;
+    setImageUrl(
+      BASE_IMAGE_URL +
+        data.question_ids[questionId].url +
+        '/poster.jpg',
+    );
+    setVideoUrl(
+      BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8',
+    );
     setTimeout(() => {
       console.log(selAnswer);
       if (selAnswer === '') {
@@ -77,17 +87,10 @@ const QuizView = ({data}) => {
             text: 'OK',
             onPress: async () => {
               setVisible(true);
-              questionId++;
+              
               if (data.question_ids[questionId]) {
                 setIsPlaying(true);
-                setImageUrl(
-                  BASE_IMAGE_URL +
-                    data.question_ids[questionId].url +
-                    '/poster.jpg',
-                );
-                setVideoUrl(
-                  BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8',
-                );
+                
                 setAnswers(data.question_ids[questionId].answers);
               }
             },
@@ -235,7 +238,9 @@ const QuizView = ({data}) => {
   };
 
   const playVideo = () => {
-    player.current.play();
+    console.log(player.current);
+    setIsPaused(false);
+    player.current.seek(0);
     setVisible(false);
   };
 
@@ -254,13 +259,14 @@ const QuizView = ({data}) => {
           height: '100%',
           justifyContent: 'center',
         }}>
-        <JWPlayer
+        <Video
           ref={player}
           style={styles.player}
-          playlistItem={playlistItem}
+          source={{uri:videoUrl}}
           onBeforePlay={onBeforePlay}
-          
-          onIdle={onIdle}
+          paused={isPaused}
+          onEnd={onIdle}
+          resizeMode="stretch"
         />
       </View>
       <View style={{flex: 1, width: '50%', backgroundColor: '#333333'}}>
