@@ -14,9 +14,9 @@ import {Overlay} from 'react-native-elements';
 
 const BASE_IMAGE_URL = 'https://content.jwplatform.com/v2/media/';
 const BASE_VIDEO_URL = 'https://content.jwplatform.com/manifests/';
-let questionId = 0;
+//let questionId = 0;
 const QuizView = ({data}) => {
-  //const [questionId, setQuestionId] = useState(0);
+  const [questionId, setQuestionId] = useState(0);
   console.disableYellowBox = true;
   const [imageUrl, setImageUrl] = useState(
     BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
@@ -65,47 +65,73 @@ const QuizView = ({data}) => {
     };
   });
 
-  const onIdle = () => {
-    console.log('123');
-    setIsPlaying(false);
-    setIsPaused(true);
-    console.log(isPlaying);
-    questionId++;
-    setImageUrl(
-      BASE_IMAGE_URL +
-        data.question_ids[questionId].url +
-        '/poster.jpg',
-    );
-    setVideoUrl(
-      BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8',
-    );
-    setTimeout(() => {
-      console.log(selAnswer);
+  handleTimeElapsed = () => {
       if (selAnswer === '') {
         Alert.alert('Time out', 'Message', [
           {
             text: 'OK',
             onPress: async () => {
               setVisible(true);
-              
+
               if (data.question_ids[questionId]) {
                 setIsPlaying(true);
-                
+
                 setAnswers(data.question_ids[questionId].answers);
               }
             },
           },
         ]);
       }
-    }, 3000);
-    //setQuestionId(nextId + 1);
-    ///console.log('After Idle ID => ', nextId);
-  };
+  }
+  const onIdle = () => {
+    setIsPlaying(false);
+    setIsPaused(true);
+    if (data.question_ids.length > questionId) {
+      setQuestionId(questionId + 1);
+      setImageUrl(
+        BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
+      );
+      setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
+    }
+  }
 
   const onBeforePlay = () => {};
   const handleAnswer = (sel) => {
-    console.log(sel);
-  }
+    setSelAnswer(sel);
+    console.log("selectedanswer=>==========>",sel);
+    if (sel != '') {
+      Alert.alert('Correct', 'Message', [
+        {
+          text: 'OK',
+          onPress: async () => {
+            setVisible(true);
+
+            if (data.question_ids[questionId]) {
+              setIsPlaying(true);
+
+              setAnswers(data.question_ids[questionId].answers);
+            }
+          },
+        },
+      ]);
+    } else {
+      Alert.alert('Wrong', 'Message', [
+        {
+          text: 'OK',
+          onPress: async () => {
+            setVisible(true);
+
+            if (data.question_ids[questionId]) {
+              setIsPlaying(true);
+
+              setAnswers(data.question_ids[questionId].answers);
+            }
+          },
+        },
+      ]);
+    }
+    
+  };
   const YesButton = ({title, handleAnswer, correct}) => {
     return (
       <TouchableOpacity
@@ -117,7 +143,9 @@ const QuizView = ({data}) => {
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 8,
-        }} onPress={()=>setSelAnswer(correct && 'Yes')}>
+        }}
+        onPress={() => handleAnswer(correct && 'Yes')}>
+        {/* onPress={() => Alert.alert(correct && 'Yes')}> */}
         <Text
           style={{
             color: '#ffffff',
@@ -143,7 +171,8 @@ const QuizView = ({data}) => {
           justifyContent: 'center',
           alignItems: 'center',
           borderRadius: 8,
-        }} onPress={()=> setSelAnswer(correct && 'No')}>
+        }}
+        onPress={() => handleAnswer(correct && 'No')}>
         <Text
           style={{
             color: '#ffffff',
@@ -157,9 +186,7 @@ const QuizView = ({data}) => {
       </TouchableOpacity>
     );
   };
-  const handleClick= () => {
-
-  }
+  const handleClick = () => {};
   const Answer = ({answer}) => {
     return (
       <View style={{alignItems: 'center'}}>
@@ -167,8 +194,16 @@ const QuizView = ({data}) => {
           {answer.label}
         </Text>
         <View style={{flexDirection: 'row'}}>
-          <YesButton title={answer.answer1} handleAnswer={handleAnswer} correct={answer.answer1 === answer.correct}/>
-          <NoButton title={answer.answer2} handleAnswer={handleAnswer} correct={answer.answer2 === answer.correct}/>
+          <YesButton
+            title={answer.answer1}
+            handleAnswer={handleAnswer}
+            correct={answer.answer1 === answer.correct}
+          />
+          <NoButton
+            title={answer.answer2}
+            handleAnswer={handleAnswer}
+            correct={answer.answer2 === answer.correct}
+          />
         </View>
       </View>
     );
@@ -186,7 +221,7 @@ const QuizView = ({data}) => {
           }}>
           <View>
             <Text style={{color: '#ffffff', fontSize: 20}}>
-              {questionId + '/' + data.question_ids.length}
+              {(questionId + 1) + '/' + data.question_ids.length}
             </Text>
             <Text style={{color: '#ffffff', fontSize: 17}}>Pitch Count</Text>
           </View>
@@ -229,7 +264,7 @@ const QuizView = ({data}) => {
               color="#ff003f"
               bgColor="#fff"
               textStyle={{fontSize: 20}}
-              onTimeElapsed={() => console.log('Elapsed!')}
+              onTimeElapsed={handleTimeElapsed}
             />
           </>
         )}
@@ -238,7 +273,6 @@ const QuizView = ({data}) => {
   };
 
   const playVideo = () => {
-    console.log(player.current);
     setIsPaused(false);
     player.current.seek(0);
     setVisible(false);
@@ -262,7 +296,7 @@ const QuizView = ({data}) => {
         <Video
           ref={player}
           style={styles.player}
-          source={{uri:videoUrl}}
+          source={{uri: videoUrl}}
           onBeforePlay={onBeforePlay}
           paused={isPaused}
           onEnd={onIdle}
