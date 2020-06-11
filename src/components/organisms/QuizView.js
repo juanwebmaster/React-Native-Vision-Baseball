@@ -1,5 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
-import CountdownCircle from 'react-native-countdown-circle';
+import React, {useState, useRef} from 'react';
 import {
   Text,
   StyleSheet,
@@ -8,16 +7,13 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import JWPlayer from 'react-native-jw-media-player';
 import Video from 'react-native-video';
-import {Overlay, Icon} from 'react-native-elements';
-
+import {Icon} from 'react-native-elements';
+import AnswerView from './AnswerView';
 const BASE_IMAGE_URL = 'https://content.jwplatform.com/v2/media/';
 const BASE_VIDEO_URL = 'https://content.jwplatform.com/manifests/';
-//let questionId = 0;
 const QuizView = ({data}) => {
   const [questionId, setQuestionId] = useState(0);
-  const [answerVisible, setAnswerVisible] = useState(true);
   console.disableYellowBox = true;
   const [imageUrl, setImageUrl] = useState(
     BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
@@ -31,48 +27,14 @@ const QuizView = ({data}) => {
   const [thumbs, setThumbs] = useState('');
   const [isPaused, setIsPaused] = useState(true);
   const [showAnswer, setShowAnswer] = useState(false);
-  const [answerId, setAnswerId] = useState(0);
+
   const player = useRef(null);
   const [visible, setVisible] = useState(true);
   const [changeStyle, setChangeStyle] = useState(false);
-  const handlePressVideo = () => {
-    // console.log(player.current.play());
-  };
-  const playlistItem = {
-    title: '',
-    mediaId: '1',
-    image: imageUrl,
-    desc: '',
-    time: 1,
-    file: videoUrl,
-    //    file: 'http://file.com/file.mp3',
-    autostart: false,
-    controls: false,
-    repeat: false,
-    displayDescription: true,
-    displayTitle: true,
-  };
-
-  const playList = data.question_ids.map((item, id) => {
-    return {
-      title: '',
-      mediaId: id,
-      image: imageUrl,
-      desc: '',
-      time: 1,
-      file: videoUrl,
-      //    file: 'http://file.com/file.mp3',
-      autostart: false,
-      controls: false,
-      repeat: false,
-      displayDescription: true,
-      displayTitle: true,
-    };
-  });
 
   handleTimeElapsed = () => {
     if (selAnswer === '') {
-      Alert.alert('Time out', 'Message', [
+      Alert.alert('Out of Time', '', [
         {
           text: 'OK',
           onPress: async () => {
@@ -101,166 +63,26 @@ const QuizView = ({data}) => {
       setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
     }
   };
-
-  const onBeforePlay = () => {};
-  const handleAnswer = (sel, id) => {
+  const handleAnswer = (sel) => {
     setSelAnswer(sel);
-    console.log('selectedanswer=>==========>', sel);
+
     if (sel == 1) setThumbs('correct');
     else setThumbs('incorrect');
 
     setChangeStyle(true);
-    setAnswerId(id);
-    console.log('selectedanswerIDDDDD=>==========>', answerId);
+    console.log(changeStyle);
     setTimeout(() => {
-      // setVisible(true);
-      // setShowAnswer(false);
-      // setThumbs('');
-      // if (data.question_ids[questionId]) {
-      //   setIsPlaying(true);
-      //   setAnswers(data.question_ids[questionId].answers);
-      // }
-      setAnswerId(0);
+      setVisible(true);
+      setShowAnswer(false);
+      setThumbs('');
+      setSelAnswer('');
+      if (data.question_ids[questionId]) {
+        setIsPlaying(true);
+        setAnswers(data.question_ids[questionId].answers);
+      }
+
       setChangeStyle(false);
-    }, 2000);
-  };
-  const YesButton = ({title, handleAnswer, correct, id}) => {
-    return (
-      <TouchableOpacity
-        style={
-          changeStyle
-            ? correct == 1
-              ? styles.correctButtonStyle
-              : styles.YesButtonStyle
-            : styles.YesButtonStyle
-        }
-        onPress={() => handleAnswer(correct, id)}>
-        {/* onPress={() => Alert.alert(correct && 'Yes')}> */}
-        <Text
-          style={{
-            color: '#ffffff',
-            fontSize: 17,
-            paddingLeft: 20,
-            paddingRight: 20,
-            fontWeight: '900',
-          }}>
-          {title}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  const NoButton = ({title, handleAnswer, correct, id}) => {
-    console.log('1111111111111111=================',id,answerId, id == answerId)
-    return (
-      <TouchableOpacity
-        style={
-          changeStyle
-            ? correct == 1
-              ? styles.correctButtonStyle
-              : styles.NoButtonStyle
-            : id == answerId
-            ? styles.wrongButtonStyle
-            : styles.NoButtonStyle
-        }
-        onPress={() => handleAnswer(correct, id)}>
-        <Text
-          style={{
-            color: '#ffffff',
-            fontSize: 17,
-            paddingLeft: 20,
-            paddingRight: 20,
-            fontWeight: '900',
-          }}>
-          {title}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-  const handleClick = () => {};
-  const Answer = ({answer}) => {
-    return (
-      <View style={{alignItems: 'center'}}>
-        <Text style={{color: '#ffffff', fontWeight: '400', fontSize: 20}}>
-          {answer.label}
-        </Text>
-        <View style={{flexDirection: 'row'}}>
-          <YesButton
-            title={answer.answer1.answer}
-            handleAnswer={handleAnswer}
-            correct={answer.answer1.correct}
-            id={answer.answer1.id}
-          />
-          <NoButton
-            title={answer.answer2.answer}
-            handleAnswer={handleAnswer}
-            correct={answer.answer2.correct}
-            id={answer.answer2.id}
-          />
-        </View>
-      </View>
-    );
-  };
-  const AnswerView = ({answers}) => {
-    return (
-      <View style={{marginRight: 50, flex: 1, alignItems: 'center'}}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            width: 400,
-            justifyContent: 'space-between',
-            paddingLeft: 20,
-          }}>
-          <View>
-            <Text style={{color: '#ffffff', fontSize: 20}}>
-              {questionId + 1 + '/' + data.question_ids.length}
-            </Text>
-            <Text style={{color: '#ffffff', fontSize: 17}}>Pitch Count</Text>
-          </View>
-
-          <TouchableOpacity
-            style={{
-              backgroundColor: '#1E73BE',
-              margin: 10,
-              padding: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 8,
-            }}
-            onPress={handlePressVideo}>
-            <Text
-              style={{
-                color: '#ffffff',
-                fontSize: 17,
-                paddingLeft: 20,
-                paddingRight: 20,
-                fontWeight: '900',
-              }}>
-              Next
-            </Text>
-          </TouchableOpacity>
-        </View>
-        {answers.map((item) => (
-          <Answer answer={item} />
-        ))}
-
-        <Text style={{color: '#ffffff', fontWeight: '700', fontSize: 17}}>
-          TIMER
-        </Text>
-        {isPlaying === false && (
-          <CountdownCircle
-            seconds={3}
-            radius={30}
-            borderWidth={8}
-            color="#ff003f"
-            bgColor="#fff"
-            textStyle={{fontSize: 20}}
-            onTimeElapsed={handleTimeElapsed}
-          />
-        )}
-      </View>
-    );
+    }, 1000);
   };
 
   const playVideo = () => {
@@ -278,14 +100,6 @@ const QuizView = ({data}) => {
           height: '100%',
           justifyContent: 'center',
         }}>
-        {/* <Overlay
-          isVisible={visible}
-          onBackdropPress={playVideo}
-          supportedOrientations={['landscape']}
-          overlayStyle={styles.overlayVideo}
-          backdropStyle={styles.backdropVideo}
-          children={Video}
-        /> */}
         {visible && (
           <TouchableOpacity
             onPress={playVideo}
@@ -384,7 +198,6 @@ const QuizView = ({data}) => {
           ref={player}
           style={styles.player}
           source={{uri: videoUrl}}
-          onBeforePlay={onBeforePlay}
           paused={isPaused}
           onEnd={onIdle}
           resizeMode="stretch"
@@ -403,7 +216,14 @@ const QuizView = ({data}) => {
               zIndex: 300,
             }}></View>
         )}
-        <AnswerView answers={answers} />
+        <AnswerView
+          answers={answers}
+          questionId={questionId}
+          countQuestions={data.question_ids.length}
+          isPlaying={isPlaying}
+          handleAnswer={handleAnswer}
+          changeStyle={changeStyle}
+        />
       </View>
     </View>
   );
@@ -416,31 +236,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 200,
-  },
-
-  correctButtonStyle: {
-    backgroundColor: 'rgba(255, 166, 40, 0.8)',
-  },
-  wrongButtonStyle: {
-    backgroundColor: 'rgba(0,0,0,1)',
-  },
-  NoButtonStyle: {
-    backgroundColor: '#ff5757',
-    flex: 1,
-    margin: 10,
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
-  },
-  YesButtonStyle: {
-    backgroundColor: '#7ed957',
-    flex: 1,
-    margin: 10,
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 8,
   },
 });
 

@@ -40,8 +40,7 @@ const QuizScreen = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <PrefersHomeIndicatorAutoHidden />
-      
-      
+
       {started && <QuizView data={data}/>}
       {!started && <LandScapeView />}
       <Spinner
