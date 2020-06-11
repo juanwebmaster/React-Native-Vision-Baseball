@@ -4,6 +4,8 @@ const SERVER_ADDRESS = 'https://appliedvisionbaseball.com/';
 const api_endpoint = SERVER_ADDRESS +
   'wp-admin/admin-ajax.php';
 const BASE_URL = SERVER_ADDRESS;
+const convert = imgUrl => imgUrl.replace('.png', '-300x169.png');
+
 export const AuthenticateUser = async (email, password) => {
   const formData = new FormData();
   formData.append('action', 'authenticate_user');
@@ -24,7 +26,7 @@ export const get_carousel_data = async (id) => {
     headers: {'Content-Type': 'multipart/form-data'},
   });
   
-  res.data.map((item) => item.img_url = BASE_URL + item.img_url);
+  res.data.map((item) => item.img_url = BASE_URL + convert(item.img_url));
   
   return res.data;
 };
