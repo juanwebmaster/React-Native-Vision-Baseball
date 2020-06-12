@@ -19,7 +19,6 @@ const SelectLevel = ({route, navigation}) => {
   useEffect(() => {
     async function getLevelData() {
       const lData = await get_level_data(data.post_id);
-      console.log("LevelData===========>",lData, data.post_id);
       setLevelData(lData);
       setIsLoading(false);
     }

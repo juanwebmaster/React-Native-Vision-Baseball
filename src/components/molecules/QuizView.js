@@ -70,7 +70,6 @@ const QuizView = ({data}) => {
     else setThumbs('incorrect');
 
     setChangeStyle(true);
-    console.log(changeStyle);
     setTimeout(() => {
       setVisible(true);
       setShowAnswer(false);

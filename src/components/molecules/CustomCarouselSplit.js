@@ -9,10 +9,8 @@ import {
 } from 'react-native';
 import _ from 'lodash';
 import {Card} from '../atoms/Card';
-import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {withTheme} from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class CustomCarouselSplit extends React.Component {
@@ -21,7 +19,6 @@ export default class CustomCarouselSplit extends React.Component {
   }
   handleClick = (item) => {
     const {navigation} = this.props;
-    console.log("===================>", item);
     if (item.post_id != null) navigation.navigate('SelectLevel', {data: item});
   };
 
@@ -48,7 +45,6 @@ export default class CustomCarouselSplit extends React.Component {
   };
 
   render() {
-    console.log("===========>", this.props.items)
     if (!this.props.items.length) return null;
     return (
       <View style={styles.container}>

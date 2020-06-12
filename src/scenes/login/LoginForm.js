@@ -30,7 +30,6 @@ const LoginForm = ({setLoggedIn}) => {
     if (email !== '' && password !== '') {
       if (email == 'guest' && password == 'Marius4Spata!!') {
         const result = await getPosts(email, password);
-        console.log(true);
         setLoggedIn(true);
       }
     }

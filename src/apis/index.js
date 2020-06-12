@@ -27,7 +27,6 @@ export const get_carousel_data = async (id) => {
   });
   
   res.data.map((item) => item.img_url = BASE_URL + convert(item.img_url, '-300x169.png'));
-  console.log(res.data);
   return res.data;
 };
 
@@ -93,6 +92,5 @@ export const get_level_data = async (post_id) => {
   });
   
   res.data.image = res.data.image.map((item) => {item.url = BASE_URL + convert(item.url, '-150x150.png'); return item;});
-  console.log(res.data);
   return res.data;
 }
