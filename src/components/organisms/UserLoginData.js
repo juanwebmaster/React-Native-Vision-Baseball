@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, ImageBackground, StyleSheet} from 'react-native';
-import {get_user_data} from '../../apis';
+import {get_user_data} from '_apis';
 const UserLoginData = () => {
   const [userData, setUserData] = useState({});
   useEffect(() => {

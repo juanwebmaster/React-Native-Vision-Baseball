@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {get_carousel_data} from '../../apis';
-import CustomCarousel from '_organisms/CustomCarousel';
+import {get_carousel_data} from '_apis';
+import CustomCarousel from '_molecules/CustomCarousel';
 
 const TopMenuCarousel = ({navigation}) => {
   const [topMenu, setTopMenu] = useState(0);

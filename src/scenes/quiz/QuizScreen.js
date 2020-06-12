@@ -1,11 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {get_quiz_data} from '../../apis';
-import SafeAreaView from 'react-native-safe-area-view';
 import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
 import { Button } from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
-import QuizView from '_components/organisms/QuizView'
+import QuizView from '_molecules/QuizView'
 import Orientation from 'react-native-orientation-locker';
 const QuizScreen = ({route, navigation}) => {
   const {data} = route.params;

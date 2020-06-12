@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
-import {get_calendar_data} from '../../apis';
+import {get_calendar_data} from '_apis';
 const CalendarData = () => {
   const [userCalendar, setUserCalendar] = useState([]);
   useEffect(() => {

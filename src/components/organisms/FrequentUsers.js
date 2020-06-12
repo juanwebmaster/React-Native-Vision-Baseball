@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
 import {DataTable} from 'react-native-paper';
-import {get_ranking_data} from '../../apis';
+import {get_ranking_data} from '_apis';
 const FrequentUsers = () => {
   const [rankingData, setRankingData] = useState([]);
   useEffect(() => {

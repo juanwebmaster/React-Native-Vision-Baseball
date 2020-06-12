@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {get_level_data} from '../../apis';
+import {get_level_data} from '_apis';
 import SafeAreaView from 'react-native-safe-area-view';
 import SelectLevelCarousel from '_organisms/SelectLevelCarousel';
 import Spinner from 'react-native-loading-spinner-overlay';

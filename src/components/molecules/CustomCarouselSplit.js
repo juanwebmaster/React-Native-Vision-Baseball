@@ -8,23 +8,23 @@ import {
   ImageBackground,
 } from 'react-native';
 import _ from 'lodash';
-import {Card} from './Card';
+import {Card} from '../atoms/Card';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {withTheme} from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class CustomCarouselSplit extends React.Component {
-    constructor (props) {
-      super(props);
-    }
-    handleClick = (item) => {
-      const {navigation} = this.props;
+  constructor(props) {
+    super(props);
+  }
+  handleClick = (item) => {
+    const {navigation} = this.props;
+    console.log("===================>", item);
+    if (item.post_id != null) navigation.navigate('SelectLevel', {data: item});
+  };
 
-      console.log("===================>", item);
-      if (item.post_id != null) navigation.navigate('SelectLevel', {data: item});
-    };
-  
   _moveToNext = () => {
     this._carousel.snapToNext();
   };
@@ -36,16 +36,17 @@ export default class CustomCarouselSplit extends React.Component {
   _renderItem = ({item, index}) => {
     return (
       <Card style={styles.cardContainerStyle}>
-        <TouchableOpacity style={styles.snapBtn} onPress={()=> this.handleClick(item)}>
+        <TouchableOpacity
+          style={styles.snapBtn}
+          onPress={() => this.handleClick(item)}>
           <ImageBackground
             source={{uri: item.img_url}}
-            style={styles.imageBackgroundStyle}>
-          </ImageBackground>
+            style={styles.imageBackgroundStyle}></ImageBackground>
         </TouchableOpacity>
       </Card>
     );
   };
-  
+
   render() {
     console.log("===========>", this.props.items)
     if (!this.props.items.length) return null;
@@ -63,7 +64,7 @@ export default class CustomCarouselSplit extends React.Component {
             data={this.props.items}
             renderItem={this._renderItem}
             sliderWidth={SCREEN_WIDTH}
-            itemWidth={SCREEN_WIDTH}
+            itemWidth={SCREEN_WIDTH / 2}
             loop={true}
             activeSlideAlignment="start"
             inactiveSlideOpacity={1}
@@ -73,10 +74,18 @@ export default class CustomCarouselSplit extends React.Component {
           />
           <View style={styles.snapBtnBox}>
             <TouchableOpacity style={styles.snapBtn} onPress={this._moveToPrev}>
-              <Icon name="angle-left" size={40} color={'rgba(255, 255, 255, 0.75)'} />
+              <Icon
+                name="angle-left"
+                size={40}
+                color={'rgba(255, 255, 255, 0.75)'}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={styles.snapBtn} onPress={this._moveToNext}>
-              <Icon name="angle-right" size={40} color={'rgba(255, 255, 255, 0.75)'}  />
+              <Icon
+                name="angle-right"
+                size={40}
+                color={'rgba(255, 255, 255, 0.75)'}
+              />
             </TouchableOpacity>
           </View>
         </View>
@@ -88,8 +97,8 @@ export default class CustomCarouselSplit extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    marginBottom: 30,
     marginTop: 30,
-    marginBottom: 30
   },
   titleBar: {
     width: '100%',
@@ -99,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     color: '#ffffff',
   },
   label: {},
@@ -108,7 +117,7 @@ const styles = StyleSheet.create({
     padding: 3,
     alignItems: 'center',
   },
-  
+
   catName: {
     textAlign: 'center',
   },
@@ -128,13 +137,13 @@ const styles = StyleSheet.create({
   cardContainerStyle: {
     borderRadius: 8,
     overflow: 'hidden',
-    width: SCREEN_WIDTH * 0.9,
+    width: SCREEN_WIDTH / 2.5,
     padding: 3,
     alignItems: 'center',
   },
   imageBackgroundStyle: {
-    width: SCREEN_WIDTH * 0.9,
-    height: 200,
+    width: SCREEN_WIDTH / 2.5,
+    height: 90,
     justifyContent: 'center',
   },
 });

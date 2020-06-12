@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import _ from 'lodash';
-import {Card} from './Card';
+import {Card} from '../atoms/Card';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome5';

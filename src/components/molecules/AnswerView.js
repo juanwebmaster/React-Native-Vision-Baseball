@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import CountdownCircle from 'react-native-countdown-circle';
-import {AnswerButton} from './AnswerButtons';
+import {AnswerButton} from '../atoms/AnswerButtons';
 const Answer = ({answer, changeStyle, handleAnswer}) => {
   return (
     <View style={{alignItems: 'center'}}>

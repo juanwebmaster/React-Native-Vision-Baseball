@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {get_carousel_data} from '../../apis';
-import CustomCarouselSplit from '_organisms/CustomCarouselSplit';
+import {get_carousel_data} from '_apis';
+import CustomCarouselSplit from '_molecules/CustomCarouselSplit';
 
 const TutorialsCarousel = ({navigation}) => {
   const [tutorialImages, setTutorialImages] = useState(0);
