@@ -8,17 +8,18 @@ import {Header} from 'react-native-elements';
 import HeaderIcon from '_atoms/HeaderIcon';
 import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
-import { StackActions } from "react-navigation";
 const SelectLevel = ({route, navigation}) => {
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(true);
-  const [levelData, setLevelData] = useState({});
-  
+  const [levelData, setLevelData] = useState({
+    "content": ""
+  });
   
 
   useEffect(() => {
     async function getLevelData() {
       const lData = await get_level_data(data.post_id);
+      console.log("LevelData===========>",lData, data.post_id);
       setLevelData(lData);
       setIsLoading(false);
     }

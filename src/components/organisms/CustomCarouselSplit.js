@@ -21,8 +21,8 @@ export default class CustomCarouselSplit extends React.Component {
   }
   handleClick = (item) => {
     const {navigation} = this.props;
-    if (item) navigation.navigate('SelectLevel', {data: item});
-    
+    console.log("===================>", item);
+    if (item.post_id != null) navigation.navigate('SelectLevel', {data: item});
   };
 
   _moveToNext = () => {
@@ -48,6 +48,7 @@ export default class CustomCarouselSplit extends React.Component {
   };
 
   render() {
+    console.log("===========>", this.props.items)
     if (!this.props.items.length) return null;
     return (
       <View style={styles.container}>
