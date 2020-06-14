@@ -11,8 +11,8 @@ import TutorialsScreen from '_scenes/tutorials';
 import MyAccountScreen from '_scenes/myaccount';
 import ModifyBillingScreen from '_scenes/modifybilling';
 import LogOutScreen from '_scenes/logout';
-import SelectLevel from '_components/organisms/SelectLevel';
-import QuizScreen from '_components/organisms/QuizScreen';
+import SelectLevel from '_scenes/selectlevel/SelectLevel';
+import QuizScreen from '_scenes/quiz/QuizScreen';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function MyDrawer() {

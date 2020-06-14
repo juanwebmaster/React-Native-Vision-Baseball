@@ -8,9 +8,8 @@ import {
   ImageBackground,
 } from 'react-native';
 import _ from 'lodash';
-import {Card} from './Card';
-import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import {Card} from '../atoms/Card';
+import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -20,9 +19,7 @@ export default class CustomCarouselSplit extends React.Component {
     }
     handleClick = (item) => {
       const {navigation} = this.props;
-
-      if (item) navigation.navigate('SelectLevel', {data:item});
-      console.log(item);
+      if (item.post_id != null) navigation.navigate('SelectLevel', {data: item});
     };
   
   _moveToNext = () => {
@@ -45,7 +42,7 @@ export default class CustomCarouselSplit extends React.Component {
       </Card>
     );
   };
-
+  
   render() {
     if (!this.props.items.length) return null;
     return (

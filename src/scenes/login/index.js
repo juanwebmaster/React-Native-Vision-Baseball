@@ -12,7 +12,6 @@ import LoginForm from './LoginForm';
 // create a component
 const LoginScreen = ({setLoggedIn}) => {
   
-
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <PrefersHomeIndicatorAutoHidden />

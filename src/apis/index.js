@@ -4,7 +4,7 @@ const SERVER_ADDRESS = 'https://appliedvisionbaseball.com/';
 const api_endpoint = SERVER_ADDRESS +
   'wp-admin/admin-ajax.php';
 const BASE_URL = SERVER_ADDRESS;
-const convert = imgUrl => imgUrl.replace('.png', '-300x169.png');
+const convert = (imgUrl, suffix) => imgUrl.replace('.png', suffix);
 
 export const AuthenticateUser = async (email, password) => {
   const formData = new FormData();
@@ -14,7 +14,7 @@ export const AuthenticateUser = async (email, password) => {
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  if (res.data.ID > 0) return true;
+  if (res.data.user_id > 0) return true;
   else return false;
 };
 
@@ -26,8 +26,7 @@ export const get_carousel_data = async (id) => {
     headers: {'Content-Type': 'multipart/form-data'},
   });
   
-  res.data.map((item) => item.img_url = BASE_URL + convert(item.img_url));
-  
+  res.data.map((item) => item.img_url = BASE_URL + convert(item.img_url, '-300x169.png'));
   return res.data;
 };
 
@@ -92,7 +91,6 @@ export const get_level_data = async (post_id) => {
     headers: {'Content-Type': 'multipart/form-data'},
   });
   
-  res.data.image = res.data.image.map((item) => {item.url = BASE_URL + item.url; return item;});
-  console.log(res.data);
+  res.data.image = res.data.image.map((item) => {item.url = BASE_URL + convert(item.url, '-150x150.png'); return item;});
   return res.data;
 }

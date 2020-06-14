@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import _ from 'lodash';
-import {Card} from './Card';
+import {Card} from '../atoms/Card';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -17,6 +17,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class SelectLevelCarousel extends React.Component {
   constructor(props) {
     super(props);
+    
   }
   handleClick = (item) => {
     const {navigation} = this.props;
@@ -47,7 +48,8 @@ export default class SelectLevelCarousel extends React.Component {
   };
 
   render() {
-    //if (!this.props.items.length) return null;
+    
+//    if (!this.props.items) return null;
     return (
       <View style={styles.container}>
         <ImageBackground

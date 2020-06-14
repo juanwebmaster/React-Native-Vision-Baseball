@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
-import {get_bodybkcolor_data} from '../../apis';
+import {get_bodybkcolor_data} from '_apis';
 import RecognitionTrainCarousel from '_organisms/RecognitionTrainCarousel';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
@@ -46,7 +46,7 @@ const Home = ({name, navigation}) => {
         rightComponent={{
           icon: 'menu',
           color: '#fff',
-          
+          onPress: () => {navigation.toggleDrawer()}
         }}
         leftComponent={HeaderIcon}
       />

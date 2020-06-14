@@ -9,6 +9,7 @@
       "_organisms": ["src/components/organisms/*"],
       "_navigations": ["src/navigations/*"],
       "_scenes": ["src/scenes/*"],
+      "_apis": ["src/apis/*"],
       "_services": ["src/services/*"],
       "_styles": ["src/styles/*"],
       "_utils": ["src/utils/*"]

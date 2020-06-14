@@ -20,8 +20,24 @@ const getPosts = async(email, password) => {
   const res = await axios.post('http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php', formData,{
     headers: {'Content-Type': 'multipart/form-data'}
   })
+  console.log(res.data);
   if (res.data.ID > 0) return true; else return false;
 };
+
+const saveToStorage = async (userData) => {
+  if (userData) {
+    await AsyncStorage.setItem('user', JSON.stringify({
+        isLoggedIn: true,
+        authToken: userData.auth_token,
+        id: userData.user_id,
+        name: userData.user_login
+      })
+    );
+    return true;
+  }
+
+  return false;
+}
 
 const LoginForm = ({setLoggedIn}) => {
   const [email, setEamil] = useState('');
@@ -30,7 +46,8 @@ const LoginForm = ({setLoggedIn}) => {
     if (email !== '' && password !== '') {
       if (email == 'guest' && password == 'Marius4Spata!!') {
         const result = await getPosts(email, password);
-        console.log(true);
+        console.log(result);
+        
         setLoggedIn(true);
       }
     }

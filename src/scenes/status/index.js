@@ -1,6 +1,17 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const Status = ({name}) => <Text>Hello About {name}!</Text>;
+class StatusView extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/referral-system/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
-export default Status;
+export default StatusView;
