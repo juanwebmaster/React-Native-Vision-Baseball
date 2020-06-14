@@ -4,15 +4,16 @@ import SafeAreaView from 'react-native-safe-area-view';
 import SelectLevelCarousel from '_organisms/SelectLevelCarousel';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {StyleSheet, ScrollView} from 'react-native';
-import {Header} from 'react-native-elements';
-import HeaderIcon from '_atoms/HeaderIcon';
 import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
+
 const SelectLevel = ({route, navigation}) => {
+  const [state, setState] = useState("default");
+
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [levelData, setLevelData] = useState({
-    "content": ""
+    items: {image: ""}
   });
   
 
@@ -27,14 +28,7 @@ const SelectLevel = ({route, navigation}) => {
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      <Header
-        rightComponent={{
-          icon: 'menu',
-          color: '#fff',
-          height: '150%',
-        }}
-        leftComponent={HeaderIcon}
-      />
+      
       <Spinner
         visible={isLoading}
         textContent={'Loading...'}

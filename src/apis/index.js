@@ -14,7 +14,7 @@ export const AuthenticateUser = async (email, password) => {
   const res = await axios.post(api_endpoint, formData, {
     headers: {'Content-Type': 'multipart/form-data'},
   });
-  if (res.data.ID > 0) return true;
+  if (res.data.user_id > 0) return true;
   else return false;
 };
 

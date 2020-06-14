@@ -46,7 +46,7 @@ const Home = ({name, navigation}) => {
         rightComponent={{
           icon: 'menu',
           color: '#fff',
-          
+          onPress: () => {navigation.toggleDrawer()}
         }}
         leftComponent={HeaderIcon}
       />
