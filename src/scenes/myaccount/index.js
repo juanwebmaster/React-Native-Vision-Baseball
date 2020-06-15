@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import { WebView } from 'react-native-webview';
+import React, {useState} from 'react';
+import {WebView} from 'react-native-webview';
+const MyAccount = () => {
+   return (
 
-class MyAccount extends Component {
-  render() {
-    return (
-      <WebView
-        source={{
-          uri: 'https://appliedvisionbaseball.com/my-account/'
-        }}
-        style={{ marginTop: 20 }}
-      />
-    );
-  }
-}
+    <WebView
+      source={{
+        uri: 'http://localhost:8888/vision-baseball/my-account',
+      }}
+      
+    />
+  );
+};
 
 export default MyAccount;

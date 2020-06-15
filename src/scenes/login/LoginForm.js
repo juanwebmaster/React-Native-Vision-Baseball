@@ -1,6 +1,7 @@
 //import liraries
 import React, {useEffect, useState, Component} from 'react';
 import axios from 'axios';
+import { WebView } from 'react-native-webview';
 import {
   View,
   Text,
@@ -11,47 +12,67 @@ import {
   StyleSheet,
   StatusBar,
 } from 'react-native';
-import { AsyncStorage } from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 
-const getPosts = async(email, password) => {
+const getPosts = async (email, password) => {
   const formData = new FormData();
   formData.append('action', 'authenticate_user');
   formData.append('email', email);
   formData.append('password', password);
-  const res = await axios.post('http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php', formData,{
-    headers: {'Content-Type': 'multipart/form-data'}
-  })
-  if (res.data.status) return res.data.data; else return false;
+  const res = await axios.post(
+    'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php',
+    formData,
+    {
+      headers: {'Content-Type': 'multipart/form-data'},
+    },
+  );
+  if (res.data.status) return res.data.data;
+  else return false;
+};
+
+const sendLoginRequest = async (email, password) => {
+  const formData = new FormData();
+  formData.append('log', email);
+  formData.append('pwd', password);
+  const res = await axios.post(
+    'http://localhost:8888/vision-baseball/wp-login.php',
+    formData,
+    {
+      headers: {'Content-Type': 'multipart/form-data'},
+    },
+  );
+  return res;
 };
 
 const saveToStorage = async (userData) => {
   if (userData) {
-    await AsyncStorage.setItem('user', JSON.stringify({
+    await AsyncStorage.setItem(
+      'user',
+      JSON.stringify({
         isLoggedIn: true,
         authToken: userData.auth_token,
         id: userData.user_id,
-        name: userData.user_login
-      })
+        name: userData.user_login,
+      }),
     );
     return true;
   }
 
   return false;
-}
+};
 
 const LoginForm = ({setLoggedIn}) => {
   const [email, setEamil] = useState('');
   const [password, setPassword] = useState('');
-  const onButtonPress = async() => {
+  const onButtonPress = async () => {
     if (email !== '' && password !== '') {
       if (email == 'guest' && password == 'Marius4Spata!!') {
         const result = await getPosts(email, password);
         setLoggedIn(saveToStorage(result));
         // console.log(result);
+        const loginResult = await sendLoginRequest(email, password);
+        console.log(loginResult);
         
-        // AsyncStorage.getItem('user', (err, userStatus) => {
-        //   console.log(userStatus);
-        // });
       }
     }
   };
@@ -66,6 +87,12 @@ const LoginForm = ({setLoggedIn}) => {
 
   return (
     <View style={styles.container}>
+      <WebView
+      source={{
+        uri: 'http://localhost:8888/vision-baseball/my-account',
+      }}
+      style={{marginTop: 20}}
+    />
       <StatusBar barStyle="light-content" />
       <TextInput
         style={styles.input}

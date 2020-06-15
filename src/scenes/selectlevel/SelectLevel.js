@@ -6,7 +6,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import {StyleSheet, ScrollView} from 'react-native';
 import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
-
+import HeaderIcon from '_atoms/HeaderIcon';
+import {Header} from 'react-native-elements';
 const SelectLevel = ({route, navigation}) => {
   const [state, setState] = useState("default");
 
@@ -28,7 +29,25 @@ const SelectLevel = ({route, navigation}) => {
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      
+      <Header
+        containerStyle={{
+          justifyContent: 'space-around',
+          paddingTop:0,
+          paddingBottom:0,
+          height:100,
+        }}
+        rightComponent={{
+          icon: 'menu',
+          color: '#fff',
+          onPress: () => {
+            navigation.toggleDrawer();
+          },
+        }}
+        
+        leftComponent={
+          <HeaderIcon />
+        }
+      />
       <Spinner
         visible={isLoading}
         textContent={'Loading...'}
