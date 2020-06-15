@@ -10,8 +10,8 @@ import {
   Button,
   StyleSheet,
   StatusBar,
-  AsyncStorage
 } from 'react-native';
+import { AsyncStorage } from '@react-native-community/async-storage';
 
 const getPosts = async(email, password) => {
   const formData = new FormData();

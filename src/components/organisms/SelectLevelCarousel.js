@@ -49,7 +49,7 @@ export default class SelectLevelCarousel extends React.Component {
 
   render() {
     
-//    if (!this.props.items) return null;
+    if (!this.props.items.image) return null;
     return (
       <View style={styles.container}>
         <ImageBackground
