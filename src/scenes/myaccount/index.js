@@ -1,6 +1,17 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const MyAccount = ({name}) => <Text>Hello MyAccount {name}!</Text>;
+class MyAccount extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/my-account/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
 export default MyAccount;

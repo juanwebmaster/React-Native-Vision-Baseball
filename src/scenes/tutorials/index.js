@@ -1,6 +1,17 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const Tutorials = ({name}) => <Text>Hello Tutorials {name}!</Text>;
+class Tutorials extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/pitch-recognition-drills-tutorials/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
 export default Tutorials;

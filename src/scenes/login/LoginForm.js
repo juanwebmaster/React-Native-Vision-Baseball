@@ -10,6 +10,7 @@ import {
   Button,
   StyleSheet,
   StatusBar,
+  AsyncStorage
 } from 'react-native';
 
 const getPosts = async(email, password) => {
@@ -20,8 +21,7 @@ const getPosts = async(email, password) => {
   const res = await axios.post('http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php', formData,{
     headers: {'Content-Type': 'multipart/form-data'}
   })
-  console.log(res.data);
-  if (res.data.ID > 0) return true; else return false;
+  if (res.data.status) return res.data.data; else return false;
 };
 
 const saveToStorage = async (userData) => {
@@ -46,9 +46,12 @@ const LoginForm = ({setLoggedIn}) => {
     if (email !== '' && password !== '') {
       if (email == 'guest' && password == 'Marius4Spata!!') {
         const result = await getPosts(email, password);
-        console.log(result);
+        setLoggedIn(saveToStorage(result));
+        // console.log(result);
         
-        setLoggedIn(true);
+        // AsyncStorage.getItem('user', (err, userStatus) => {
+        //   console.log(userStatus);
+        // });
       }
     }
   };

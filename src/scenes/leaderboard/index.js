@@ -1,6 +1,17 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const LeaderBoard = ({name}) => <Text>Hello About {name}!</Text>;
+class LeaderBoard extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/leadership/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
 export default LeaderBoard;

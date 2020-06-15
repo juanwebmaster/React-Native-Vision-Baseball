@@ -1,6 +1,18 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const ModifyBilling = ({name}) => <Text>Hello ModifyBilling {name}!</Text>;
+class ModifyBilling extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/modify-billing/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
 export default ModifyBilling;
+
