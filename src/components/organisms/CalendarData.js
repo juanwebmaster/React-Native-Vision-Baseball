@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   CalendarDataStyle: {
     flex: 1,
     flexWrap: 'wrap',
-    paddingLeft: 50,
+    paddingLeft: 30,
     paddingBottom: 50,
     flexDirection: 'row',
     backgroundColor: '#ffffff',

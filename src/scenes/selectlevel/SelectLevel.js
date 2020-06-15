@@ -3,7 +3,7 @@ import {get_level_data} from '_apis';
 import SafeAreaView from 'react-native-safe-area-view';
 import SelectLevelCarousel from '_organisms/SelectLevelCarousel';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView, View} from 'react-native';
 import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
 import HeaderIcon from '_atoms/HeaderIcon';
@@ -28,7 +28,8 @@ const SelectLevel = ({route, navigation}) => {
     getLevelData();
   }, []);
   return (
-    <SafeAreaView style={styles.container}>
+    // <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
       <Header
         containerStyle={{
           justifyContent: 'space-around',
@@ -63,7 +64,8 @@ const SelectLevel = ({route, navigation}) => {
         />
         <CustomFooter />
       </ScrollView>
-    </SafeAreaView>
+    </View>
+    // </SafeAreaView>
   );
 };
 

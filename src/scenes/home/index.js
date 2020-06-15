@@ -34,7 +34,8 @@ const Home = ({name, navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}>
+    <View style={styles.container} style={{backgroundColor: bkColor}}>
+    {/* <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}> */}
       <PrefersHomeIndicatorAutoHidden />
       <Spinner
         visible={isLoading}
@@ -80,7 +81,8 @@ const Home = ({name, navigation}) => {
         <FrequentUsers />
         <CustomFooter />
       </ScrollView>
-    </SafeAreaView>
+    {/* </SafeAreaView> */}
+</View>
   );
 };
 
