@@ -30,19 +30,7 @@ const getPosts = async (email, password) => {
   else return false;
 };
 
-const sendLoginRequest = async (email, password) => {
-  const formData = new FormData();
-  formData.append('log', email);
-  formData.append('pwd', password);
-  const res = await axios.post(
-    'http://localhost:8888/vision-baseball/wp-login.php',
-    formData,
-    {
-      headers: {'Content-Type': 'multipart/form-data'},
-    },
-  );
-  return res;
-};
+
 
 const saveToStorage = async (userData) => {
   if (userData) {
@@ -70,8 +58,7 @@ const LoginForm = ({setLoggedIn}) => {
         const result = await getPosts(email, password);
         setLoggedIn(saveToStorage(result));
         // console.log(result);
-        const loginResult = await sendLoginRequest(email, password);
-        console.log(loginResult);
+        
         
       }
     }

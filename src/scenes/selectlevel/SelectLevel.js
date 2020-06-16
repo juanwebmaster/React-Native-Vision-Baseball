@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import {get_level_data} from '_apis';
 import SafeAreaView from 'react-native-safe-area-view';
 import SelectLevelCarousel from '_organisms/SelectLevelCarousel';
@@ -8,34 +9,42 @@ import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
 import HeaderIcon from '_atoms/HeaderIcon';
 import {Header} from 'react-native-elements';
-const SelectLevel = ({route, navigation}) => {
-  const [state, setState] = useState("default");
 
+const SelectLevel = ({route, navigation}) => {
+  const [state, setState] = useState('default');
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [levelData, setLevelData] = useState({
-    items: {image: ""}
+    items: {image: ''},
   });
-  
 
+  useFocusEffect(
+    React.useCallback(() => {
+      Orientation.lockToPortrait();
+    }, [])
+  )
+  
   useEffect(() => {
     async function getLevelData() {
       const lData = await get_level_data(data.post_id);
       setLevelData(lData);
       setIsLoading(false);
     }
-    Orientation.lockToPortrait();
+
     getLevelData();
+    // return () => {
+    //   focusListener.remove();
+    // };
   }, []);
   return (
     // <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+    <View style={styles.container}>
       <Header
         containerStyle={{
           justifyContent: 'space-around',
-          paddingTop:0,
-          paddingBottom:0,
-          height:100,
+          paddingTop: 0,
+          paddingBottom: 0,
+          height: 100,
         }}
         rightComponent={{
           icon: 'menu',
@@ -44,10 +53,7 @@ const SelectLevel = ({route, navigation}) => {
             navigation.toggleDrawer();
           },
         }}
-        
-        leftComponent={
-          <HeaderIcon />
-        }
+        leftComponent={<HeaderIcon />}
       />
       <Spinner
         visible={isLoading}
