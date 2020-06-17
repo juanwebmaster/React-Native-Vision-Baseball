@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
 import {get_bodybkcolor_data} from '_apis';
 import RecognitionTrainCarousel from '_organisms/RecognitionTrainCarousel';
+import { useFocusEffect } from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -23,6 +24,13 @@ import Orientation from 'react-native-orientation-locker';
 const Home = ({name, navigation}) => {
   const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [reset, setReset] = useState(true);
+  useFocusEffect(
+    React.useCallback(() => {
+      
+    }, [])
+  )
+
   useEffect(() => {
     async function get_color() {
       const bColor = await get_bodybkcolor_data(1206);

@@ -9,7 +9,12 @@ import CustomFooter from '_organisms/CustomFooter';
 import Orientation from 'react-native-orientation-locker';
 import HeaderIcon from '_atoms/HeaderIcon';
 import {Header} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
+const answer_options = {
+  correctness: {},
+  user_answered: {},
+}
 const SelectLevel = ({route, navigation}) => {
   const [state, setState] = useState('default');
   const {data} = route.params;
@@ -17,7 +22,10 @@ const SelectLevel = ({route, navigation}) => {
   const [levelData, setLevelData] = useState({
     items: {image: ''},
   });
-
+  AsyncStorage.setItem(
+    'answersStore',
+    JSON.stringify(answer_options)
+  )
   useFocusEffect(
     React.useCallback(() => {
       Orientation.lockToPortrait();
