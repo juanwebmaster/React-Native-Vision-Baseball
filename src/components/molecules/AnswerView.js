@@ -49,7 +49,7 @@ const AnswerView = ({
         }}>
         <View>
           <Text style={{color: '#ffffff', fontSize: 20}}>
-            {questionId + 1 + '/' + countQuestions}
+            {(questionId + 1) + '/' + countQuestions}
           </Text>
           <Text style={{color: '#ffffff', fontSize: 17}}>Pitch Count</Text>
         </View>

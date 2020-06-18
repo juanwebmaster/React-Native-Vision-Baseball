@@ -34,6 +34,7 @@ const QuizView = ({data}) => {
   const [visible, setVisible] = useState(true);
   const [changeStyle, setChangeStyle] = useState(false);
   const qIDs = data.question_ids.map(item => item.id);
+  
   const prefix = 'question_id_';
   let options = {
     correctness: {
@@ -42,8 +43,12 @@ const QuizView = ({data}) => {
     user_answered: {
 
     },
-    question_ids: qIDs
+    question_ids: qIDs,
+    passed_time: "1 minute",
+    calc_method: "by_correctness",
+    attributes_information: [],
   };
+  console.log(data.question_ids[0].id);
   handleTimeElapsed = () => {
     if (selAnswer === '') {
       options['user_answered'][prefix + data.question_ids[questionId].id] = '';
@@ -71,20 +76,16 @@ const QuizView = ({data}) => {
     }
   };
   const onIdle = () => {
+    console.log('onIdle=========>questionId', questionId);
     setIsPlaying(false);
     setIsPaused(true);
     setShowAnswer(true);
-    if (data.question_ids.length > questionId) {
-      setQuestionId(questionId + 1);
-      setImageUrl(
-        BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
-      );
-      setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
-    }
+    
+    
   };
   const handleAnswer = (sel, id) => {
     setSelAnswer(sel);
-    
+    console.log("handleAnswer===========>",questionId);
     options['user_answered'][prefix + data.question_ids[questionId].id] = id;
     if (sel == 1) {
       setThumbs('correct');
@@ -93,6 +94,7 @@ const QuizView = ({data}) => {
       setThumbs('incorrect');
       options['correctness'][prefix + data.question_ids[questionId].id] = false;
     } 
+
     AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
       AsyncStorage.getItem('answersStore', (err, result) => {
         console.log('Merged =======> ', result);
@@ -104,6 +106,18 @@ const QuizView = ({data}) => {
       setShowAnswer(false);
       setThumbs('');
       setSelAnswer('');
+
+      console.log("IDSS=========>",data.question_ids.length, questionId);
+      if (data.question_ids[questionId + 1]) {
+        setQuestionId(questionId + 1);
+        setImageUrl(
+          BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
+        );
+        setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
+      }else {
+        console.log("Finished");
+      }
+
       if (data.question_ids[questionId]) {
         setIsPlaying(true);
         setAnswers(data.question_ids[questionId].answers);
