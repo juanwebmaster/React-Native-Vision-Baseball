@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Dimensions,
   ImageBackground,
+  DeviceEventEmitter,
 } from 'react-native';
 import _ from 'lodash';
 import {Card} from '../atoms/Card';
@@ -17,7 +18,6 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 export default class SelectLevelCarousel extends React.Component {
   constructor(props) {
     super(props);
-    
   }
   handleClick = (item) => {
     const {navigation} = this.props;
@@ -48,17 +48,15 @@ export default class SelectLevelCarousel extends React.Component {
   };
 
   render() {
-    
-//    if (!this.props.items) return null;
+    if (!this.props.items.image) return null;
     return (
       <View style={styles.container}>
         <ImageBackground
-            source={{uri: this.props.backgroundImage}}
-            style={{width:'100%',}}
-            >
-          <View style={{backgroundColor:'rgba(0,0,0, 0.7)'}}>
+          source={{uri: this.props.backgroundImage}}
+          style={{width: '100%'}}>
+          <View style={{backgroundColor: 'rgba(0,0,0, 0.7)'}}>
             <View style={styles.titleBar}>
-            <Text style={styles.title}>{this.props.items.title}</Text>
+              <Text style={styles.title}>{this.props.items.title}</Text>
               <Text style={styles.content}>{this.props.items.content}</Text>
             </View>
             <View style={styles.slider}>
@@ -79,14 +77,18 @@ export default class SelectLevelCarousel extends React.Component {
                 removeClippedSubviews={true}
               />
               <View style={styles.snapBtnBox}>
-                <TouchableOpacity style={styles.snapBtn} onPress={this._moveToPrev}>
+                <TouchableOpacity
+                  style={styles.snapBtn}
+                  onPress={this._moveToPrev}>
                   <Icon
                     name="angle-left"
                     size={40}
                     color={'rgba(255, 255, 255, 0.75)'}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.snapBtn} onPress={this._moveToNext}>
+                <TouchableOpacity
+                  style={styles.snapBtn}
+                  onPress={this._moveToNext}>
                   <Icon
                     name="angle-right"
                     size={40}
@@ -105,7 +107,6 @@ export default class SelectLevelCarousel extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    
   },
   titleBar: {
     padding: 20,
@@ -116,12 +117,12 @@ const styles = StyleSheet.create({
   content: {
     fontSize: 20,
     color: 'rgba(255,255,255,1)',
-    textAlign:'center',
+    textAlign: 'center',
   },
   title: {
     fontSize: 70,
     color: 'rgba(255,255,255,1)',
-    textAlign:'center',
+    textAlign: 'center',
   },
   label: {},
   slideItem: {
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
 
   slider: {
     justifyContent: 'center',
-    
+
     backgroundColor: '#222',
     padding: 10,
   },
@@ -157,6 +158,6 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH / 2.5,
     height: 180,
     justifyContent: 'center',
-    alignItems:'center'
+    alignItems: 'center',
   },
 });

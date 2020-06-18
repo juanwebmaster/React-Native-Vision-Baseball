@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
 import QuizView from '_molecules/QuizView'
 import Orientation from 'react-native-orientation-locker';
+import {DeviceEventEmitter} from 'react-native'
 const QuizScreen = ({route, navigation}) => {
   const {data} = route.params;
   const [isLoading, setIsLoading] = useState(false);
@@ -13,13 +14,16 @@ const QuizScreen = ({route, navigation}) => {
   const handleOrientation = (orientation) => {
     setCurrentOrientation(orientation);
   };
+
   
   useEffect(() => {
     //Orientation.addOrientationListener(handleOrientation);
     Orientation.lockToLandscape();
   }, []);
   
-  
+  DeviceEventEmitter.emit("refresher", () => {
+    console.log("second");
+  })
 
   const handleClick = () => {
     setStarted(true);
@@ -38,7 +42,7 @@ const QuizScreen = ({route, navigation}) => {
   return (
     <View style={styles.container}>
       <PrefersHomeIndicatorAutoHidden />
-
+      
       {started && <QuizView data={data}/>}
       {!started && <LandScapeView />}
       <Spinner

@@ -6,7 +6,7 @@ class StatusView extends Component {
     return (
       <WebView
         source={{
-          uri: 'https://appliedvisionbaseball.com/referral-system/'
+          uri: 'https://appliedvisionbaseball.com/statistic-page/'
         }}
         style={{ marginTop: 20 }}
       />

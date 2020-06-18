@@ -9,7 +9,7 @@ const App = () => {
   }, 1000);
   const [loggedIn, setLoggedIn] = useState(false);
   return (
-      !loggedIn ? <Login setLoggedIn={setLoggedIn} /> : 
+      loggedIn ? <Login setLoggedIn={setLoggedIn} /> : 
         <AppNavigation />
   )
 };

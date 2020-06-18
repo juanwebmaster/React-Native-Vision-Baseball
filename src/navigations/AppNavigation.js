@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Icon} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -69,7 +69,11 @@ export default AppNavigation = () => {
       <Stack.Navigator>
         <Stack.Screen name="Member Area" component={MyDrawer} />
         <Stack.Screen name="SelectLevel" component={SelectLevel} />
-        <Stack.Screen name="QuizScreen" component={QuizScreen} />
+        <Stack.Screen
+          name="QuizScreen"
+          component={QuizScreen}
+          
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

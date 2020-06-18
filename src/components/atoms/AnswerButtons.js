@@ -7,6 +7,7 @@ export const AnswerButton = ({
   correct,
   changeStyle,
   buttonType,
+  id,
 }) => {
   return (
     <TouchableOpacity
@@ -21,7 +22,7 @@ export const AnswerButton = ({
           ? styles.YesButtonStyle
           : styles.NoButtonStyle
       }
-      onPress={() => handleAnswer(correct)}>
+      onPress={() => handleAnswer(correct, id)}>
       <Text
         style={{
           color: '#ffffff',

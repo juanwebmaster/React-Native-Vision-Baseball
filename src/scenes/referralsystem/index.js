@@ -1,6 +1,17 @@
-import React from 'react';
-import {Text} from 'react-native';
+import React, { Component } from 'react';
+import { WebView } from 'react-native-webview';
 
-const ReferralSystem = ({name}) => <Text>Hello ReferralSystem {name}!</Text>;
+class ReferralSystem extends Component {
+  render() {
+    return (
+      <WebView
+        source={{
+          uri: 'https://appliedvisionbaseball.com/referral-system/'
+        }}
+        style={{ marginTop: 20 }}
+      />
+    );
+  }
+}
 
 export default ReferralSystem;

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import FrequentUsers from '_organisms/FrequentUsers';
 import {get_bodybkcolor_data} from '_apis';
 import RecognitionTrainCarousel from '_organisms/RecognitionTrainCarousel';
+import { useFocusEffect } from '@react-navigation/native';
 import SafeAreaView from 'react-native-safe-area-view';
 import {Header} from 'react-native-elements';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -13,7 +14,7 @@ import TutorialsCarousel from '_organisms/TutorialsCarousel';
 import TopMenuCarousel from '_organisms/TopMenuCarousel';
 import PopPitchersCarousel from '_organisms/PopPitchersCarousel';
 import DrillsCarousel from '_organisms/DrillsCarousel';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, Text, Image} from 'react-native';
 import ProLevelCarousel from '_organisms/ProLevelCarousel';
 import SchoolLevelCarousel from '_organisms/SchoolLevelCarousel';
 import YouthLevelCarousel from '_organisms/YouthLevelCarousel';
@@ -21,9 +22,15 @@ import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator';
 import Orientation from 'react-native-orientation-locker';
 
 const Home = ({name, navigation}) => {
-  
   const [bkColor, setBkColor] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [reset, setReset] = useState(true);
+  useFocusEffect(
+    React.useCallback(() => {
+      
+    }, [])
+  )
+
   useEffect(() => {
     async function get_color() {
       const bColor = await get_bodybkcolor_data(1206);
@@ -35,7 +42,8 @@ const Home = ({name, navigation}) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}>
+    <View style={styles.container} style={{backgroundColor: bkColor}}>
+    {/* <SafeAreaView style={styles.container} style={{backgroundColor: bkColor}}> */}
       <PrefersHomeIndicatorAutoHidden />
       <Spinner
         visible={isLoading}
@@ -43,12 +51,23 @@ const Home = ({name, navigation}) => {
         textStyle={styles.spinnerTextStyle}
       />
       <Header
+        containerStyle={{
+          justifyContent: 'space-around',
+          paddingTop:0,
+          paddingBottom:0,
+          height:100,
+        }}
         rightComponent={{
           icon: 'menu',
           color: '#fff',
-          onPress: () => {navigation.toggleDrawer()}
+          onPress: () => {
+            navigation.toggleDrawer();
+          },
         }}
-        leftComponent={HeaderIcon}
+        
+        leftComponent={
+          <HeaderIcon />
+        }
       />
       <ScrollView style={styles.scrollView} scrollEnabled={true}>
         <UserLoginData />
@@ -59,18 +78,19 @@ const Home = ({name, navigation}) => {
             borderBottomWidth: 2,
             borderColor: '#888888',
           }}></View>
-        <TutorialsCarousel navigation={navigation} backColor={bkColor}/>
-        <PopPitchersCarousel navigation={navigation}  backColor={bkColor}/>
-        <DrillsCarousel navigation={navigation}  backColor={bkColor}/>
-        <ProLevelCarousel navigation={navigation}  backColor={bkColor}/>
-        <SchoolLevelCarousel navigation={navigation}  backColor={bkColor}/>
-        <YouthLevelCarousel navigation={navigation}  backColor={bkColor}/>
-        <RecognitionTrainCarousel navigation={navigation}  backColor={bkColor}/>
+        <TutorialsCarousel navigation={navigation} backColor={bkColor} />
+        <PopPitchersCarousel navigation={navigation} backColor={bkColor} />
+        <DrillsCarousel navigation={navigation} backColor={bkColor} />
+        <ProLevelCarousel navigation={navigation} backColor={bkColor} />
+        <SchoolLevelCarousel navigation={navigation} backColor={bkColor} />
+        <YouthLevelCarousel navigation={navigation} backColor={bkColor} />
+        <RecognitionTrainCarousel navigation={navigation} backColor={bkColor} />
         <CalendarData />
         <FrequentUsers />
         <CustomFooter />
       </ScrollView>
-    </SafeAreaView>
+    {/* </SafeAreaView> */}
+</View>
   );
 };
 

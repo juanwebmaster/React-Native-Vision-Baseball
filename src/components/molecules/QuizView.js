@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import Video from 'react-native-video';
 import {Icon} from 'react-native-elements';
 import AnswerView from './AnswerView';
@@ -31,9 +33,31 @@ const QuizView = ({data}) => {
   const player = useRef(null);
   const [visible, setVisible] = useState(true);
   const [changeStyle, setChangeStyle] = useState(false);
+  const qIDs = data.question_ids.map(item => item.id);
+  
+  const prefix = 'question_id_';
+  let options = {
+    correctness: {
 
+    },
+    user_answered: {
+
+    },
+    question_ids: qIDs,
+    passed_time: "1 minute",
+    calc_method: "by_correctness",
+    attributes_information: [],
+  };
+  console.log(data.question_ids[0].id);
   handleTimeElapsed = () => {
     if (selAnswer === '') {
+      options['user_answered'][prefix + data.question_ids[questionId].id] = '';
+      options['correctness'][prefix + data.question_ids[questionId].id] = false;
+      AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
+        AsyncStorage.getItem('answersStore', (err, result) => {
+          console.log('Merged =======> ', result);
+        })
+      })
       Alert.alert('Out of Time', '', [
         {
           text: 'OK',
@@ -52,29 +76,48 @@ const QuizView = ({data}) => {
     }
   };
   const onIdle = () => {
+    console.log('onIdle=========>questionId', questionId);
     setIsPlaying(false);
     setIsPaused(true);
     setShowAnswer(true);
-    if (data.question_ids.length > questionId) {
-      setQuestionId(questionId + 1);
-      setImageUrl(
-        BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
-      );
-      setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
-    }
+    
+    
   };
-  const handleAnswer = (sel) => {
+  const handleAnswer = (sel, id) => {
     setSelAnswer(sel);
+    console.log("handleAnswer===========>",questionId);
+    options['user_answered'][prefix + data.question_ids[questionId].id] = id;
+    if (sel == 1) {
+      setThumbs('correct');
+      options['correctness'][prefix + data.question_ids[questionId].id] = true;
+    } else {
+      setThumbs('incorrect');
+      options['correctness'][prefix + data.question_ids[questionId].id] = false;
+    } 
 
-    if (sel == 1) setThumbs('correct');
-    else setThumbs('incorrect');
-
+    AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
+      AsyncStorage.getItem('answersStore', (err, result) => {
+        console.log('Merged =======> ', result);
+      })
+    })
     setChangeStyle(true);
     setTimeout(() => {
       setVisible(true);
       setShowAnswer(false);
       setThumbs('');
       setSelAnswer('');
+
+      console.log("IDSS=========>",data.question_ids.length, questionId);
+      if (data.question_ids[questionId + 1]) {
+        setQuestionId(questionId + 1);
+        setImageUrl(
+          BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
+        );
+        setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
+      }else {
+        console.log("Finished");
+      }
+
       if (data.question_ids[questionId]) {
         setIsPlaying(true);
         setAnswers(data.question_ids[questionId].answers);
@@ -114,7 +157,6 @@ const QuizView = ({data}) => {
               backgroundColor: 'rgba(33,33,33,0.5)',
               zIndex: 300,
             }}>
-            {/* {<i class="fa fa-play" aria-hidden="true"></i>} */}
             <Icon
               name="play"
               type="font-awesome"
