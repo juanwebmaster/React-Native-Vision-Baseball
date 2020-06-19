@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {DataTable} from 'react-native-paper';
+//import {DataTable} from 'react-native-paper';
 import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
 import {get_ranking_data} from '_apis';
 const FrequentUsers = () => {

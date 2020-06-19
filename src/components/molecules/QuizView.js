@@ -8,12 +8,35 @@ import {
   Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import axios from 'axios';
 import Video from 'react-native-video';
 import {Icon} from 'react-native-elements';
 import AnswerView from './AnswerView';
 const BASE_IMAGE_URL = 'https://content.jwplatform.com/v2/media/';
 const BASE_VIDEO_URL = 'https://content.jwplatform.com/manifests/';
+
+
+export const postResult = async (data) => {
+  const formData = new FormData();
+  formData.append('action', 'statistic_data');
+  formData.append('user_id', data.user_id);
+  formData.append('question_id', data.question_id);
+  formData.append('correct_ans', data.correct_answer);
+  formData.append('user_answer', data.user_answered);
+  formData.append('react_time', data.reaction_time);
+  formData.append('pitch_type', data.pitch_type);
+  formData.append('accuracy', data.accuracy);
+  formData.append('date_time', data.date_time);
+  const res = await axios.post(
+    'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php',
+    formData,
+    {
+      headers: {'Content-Type': 'multipart/form-data'},
+    },
+  );
+  return(res.data);
+};
+
 const QuizView = ({data}) => {
   const [questionId, setQuestionId] = useState(0);
   console.disableYellowBox = true;
@@ -48,15 +71,25 @@ const QuizView = ({data}) => {
     calc_method: "by_correctness",
     attributes_information: [],
   };
-  console.log(data.question_ids[0].id);
+//  console.log(data.question_ids[0].id);
   handleTimeElapsed = () => {
     if (selAnswer === '') {
       options['user_answered'][prefix + data.question_ids[questionId].id] = '';
       options['correctness'][prefix + data.question_ids[questionId].id] = false;
-      AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
-        AsyncStorage.getItem('answersStore', (err, result) => {
-          console.log('Merged =======> ', result);
-        })
+      AsyncStorage.getItem('user', async (err, result) => {
+        const userInfo = JSON.parse(result);
+        const statisticResult = {
+          question_id: data.question_ids[questionId].id,
+          user_id: userInfo.id,
+          correct_answer: data.question_ids[questionId].correct_answer,
+          user_answered: '',
+          reaction_time: 3,
+          pitch_type: data.question_ids[questionId].pitch_type,
+          accuracy: 0,
+          date_time: null
+        }
+        const post_res = await postResult(statisticResult);
+        console.log("result=>", post_res);
       })
       Alert.alert('Out of Time', '', [
         {
@@ -76,55 +109,69 @@ const QuizView = ({data}) => {
     }
   };
   const onIdle = () => {
-    console.log('onIdle=========>questionId', questionId);
     setIsPlaying(false);
     setIsPaused(true);
     setShowAnswer(true);
-    
-    
   };
-  const handleAnswer = (sel, id) => {
-    setSelAnswer(sel);
-    console.log("handleAnswer===========>",questionId);
-    options['user_answered'][prefix + data.question_ids[questionId].id] = id;
-    if (sel == 1) {
-      setThumbs('correct');
-      options['correctness'][prefix + data.question_ids[questionId].id] = true;
-    } else {
-      setThumbs('incorrect');
-      options['correctness'][prefix + data.question_ids[questionId].id] = false;
-    } 
-
-    AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
-      AsyncStorage.getItem('answersStore', (err, result) => {
-        console.log('Merged =======> ', result);
+  const handleAnswer =  (sel, id, pitchType) => {
+    if (id > 0) {
+      setSelAnswer(sel);
+      AsyncStorage.getItem('user', async (err, result) => {
+        const userInfo = JSON.parse(result);
+        const statisticResult = {
+          question_id: data.question_ids[questionId].id,
+          user_id: userInfo.id,
+          correct_answer: data.question_ids[questionId].correct_answer,
+          user_answered: id,
+          reaction_time: 1,
+          pitch_type: data.question_ids[questionId].pitch_type,
+          accuracy: sel,
+          date_time: null
+        }
+        const post_res = await postResult(statisticResult);
+        console.log("result=>", post_res);
       })
-    })
-    setChangeStyle(true);
-    setTimeout(() => {
-      setVisible(true);
-      setShowAnswer(false);
-      setThumbs('');
-      setSelAnswer('');
+      
+      options['user_answered'][prefix + data.question_ids[questionId].id] = id;
+      if (sel == 1) {
+        setThumbs('correct');
+        options['correctness'][prefix + data.question_ids[questionId].id] = true;
+      } else {
+        setThumbs('incorrect');
+        options['correctness'][prefix + data.question_ids[questionId].id] = false;
+      } 
 
-      console.log("IDSS=========>",data.question_ids.length, questionId);
-      if (data.question_ids[questionId + 1]) {
-        setQuestionId(questionId + 1);
-        setImageUrl(
-          BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
-        );
-        setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
-      }else {
-        console.log("Finished");
-      }
+      AsyncStorage.mergeItem('answersStore', JSON.stringify(options), () => {
+        AsyncStorage.getItem('answersStore', (err, result) => {
+          //console.log('Merged =======> ', result);
+        })
+      })
+      setChangeStyle(true);
+      setTimeout(() => {
+        setVisible(true);
+        setShowAnswer(false);
+        setThumbs('');
+        setSelAnswer('');
 
-      if (data.question_ids[questionId]) {
-        setIsPlaying(true);
-        setAnswers(data.question_ids[questionId].answers);
-      }
+        if (data.question_ids[questionId + 1]) {
+          setQuestionId(questionId + 1);
+          setImageUrl(
+            BASE_IMAGE_URL + data.question_ids[questionId].url + '/poster.jpg',
+          );
+          setVideoUrl(BASE_VIDEO_URL + data.question_ids[questionId].url + '.m3u8');
+        }else {
+          
+        }
 
-      setChangeStyle(false);
-    }, 1000);
+        if (data.question_ids[questionId]) {
+          setIsPlaying(true);
+          setAnswers(data.question_ids[questionId].answers);
+        }
+
+        setChangeStyle(false);
+      }, 1000);
+    }
+    
   };
 
   const playVideo = () => {

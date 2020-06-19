@@ -86,7 +86,7 @@ const Home = ({name, navigation}) => {
         <YouthLevelCarousel navigation={navigation} backColor={bkColor} />
         <RecognitionTrainCarousel navigation={navigation} backColor={bkColor} />
         <CalendarData />
-        <FrequentUsers />
+        {/* <FrequentUsers /> */}
         <CustomFooter />
       </ScrollView>
     {/* </SafeAreaView> */}
