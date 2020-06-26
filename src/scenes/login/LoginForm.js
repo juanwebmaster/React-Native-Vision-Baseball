@@ -40,7 +40,10 @@ const saveToStorage = async (userData) => {
         isLoggedIn: true,
         authToken: userData.auth_token,
         id: userData.user_id,
-        name: userData.user_login,
+        user_login: userData.user_login,
+        user_email: userData.user_email,
+        user_name: userData.user_name,
+        user_ip: '',
       }),
     );
     return true;

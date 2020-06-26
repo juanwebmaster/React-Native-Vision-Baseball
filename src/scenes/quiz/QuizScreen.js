@@ -43,7 +43,7 @@ const QuizScreen = ({route, navigation}) => {
     <View style={styles.container}>
       <PrefersHomeIndicatorAutoHidden />
       
-      {started && <QuizView data={data}/>}
+      {started && <QuizView data={data} navigation={navigation}/>}
       {!started && <LandScapeView />}
       <Spinner
         visible={isLoading}
@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    
   },
   sliderContainer: {
     backgroundColor: 'rgb(0,0,0)',

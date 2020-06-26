@@ -23,7 +23,7 @@ export const AnswerButton = ({
           ? styles.YesButtonStyle
           : styles.NoButtonStyle
       }
-      onPress={() => handleAnswer(correct, id, pitchType)}>
+      onPress={() => handleAnswer(correct, id, pitchType, title)}>
       <Text
         style={{
           color: '#ffffff',
