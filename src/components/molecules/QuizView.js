@@ -28,7 +28,7 @@ export const postResult = async (data) => {
   formData.append('accuracy', data.accuracy);
   formData.append('date_time', data.date_time);
   const res = await axios.post(
-    'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php',
+    'https://appliedvisionbaseball.com/wp-admin/admin-ajax.php',
     formData,
     {
       headers: {'Content-Type': 'multipart/form-data'},

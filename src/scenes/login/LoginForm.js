@@ -20,7 +20,7 @@ const getPosts = async (email, password) => {
   formData.append('email', email);
   formData.append('password', password);
   const res = await axios.post(
-    'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php',
+    'https://appliedvisionbaseball.com/wp-admin/admin-ajax.php',
     formData,
     {
       headers: {'Content-Type': 'multipart/form-data'},
@@ -79,7 +79,7 @@ const LoginForm = ({setLoggedIn}) => {
     <View style={styles.container}>
       <WebView
       source={{
-        uri: 'http://localhost:8888/vision-baseball/my-account',
+        uri: 'https://appliedvisionbaseball.com/my-account',
       }}
       style={{marginTop: 20}}
     />
