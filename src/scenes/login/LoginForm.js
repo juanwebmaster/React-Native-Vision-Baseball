@@ -20,7 +20,7 @@ const getPosts = async (email, password) => {
   formData.append('email', email);
   formData.append('password', password);
   const res = await axios.post(
-    'http://localhost:8888/vision-baseball/wp-admin/admin-ajax.php',
+    'https://appliedvisionbaseball.com/wp-admin/admin-ajax.php',
     formData,
     {
       headers: {'Content-Type': 'multipart/form-data'},
@@ -40,7 +40,10 @@ const saveToStorage = async (userData) => {
         isLoggedIn: true,
         authToken: userData.auth_token,
         id: userData.user_id,
-        name: userData.user_login,
+        user_login: userData.user_login,
+        user_email: userData.user_email,
+        user_name: userData.user_name,
+        user_ip: '',
       }),
     );
     return true;
@@ -53,14 +56,10 @@ const LoginForm = ({setLoggedIn}) => {
   const [email, setEamil] = useState('');
   const [password, setPassword] = useState('');
   const onButtonPress = async () => {
-    if (email !== '' && password !== '') {
-      if (email == 'guest' && password == 'Marius4Spata!!') {
-        const result = await getPosts(email, password);
-        setLoggedIn(saveToStorage(result));
-        // console.log(result);
-        
-        
-      }
+    if (email !== '' && password !== '') {     
+      const result = await getPosts(email, password);
+      setLoggedIn(saveToStorage(result));
+      // console.log(result);
     }
   };
 
@@ -76,7 +75,7 @@ const LoginForm = ({setLoggedIn}) => {
     <View style={styles.container}>
       <WebView
       source={{
-        uri: 'http://localhost:8888/vision-baseball/my-account',
+        uri: 'https://appliedvisionbaseball.com/my-account',
       }}
       style={{marginTop: 20}}
     />

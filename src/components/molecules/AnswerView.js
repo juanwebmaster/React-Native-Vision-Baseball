@@ -16,6 +16,7 @@ const Answer = ({answer, changeStyle, handleAnswer}) => {
           handleAnswer={handleAnswer}
           buttonType={'red'}
           id={answer.answer1.id}
+          pitchType={answer.label}
         />
         <AnswerButton
           title={answer.answer2.answer}
@@ -24,6 +25,7 @@ const Answer = ({answer, changeStyle, handleAnswer}) => {
           handleAnswer={handleAnswer}
           buttonType={'blue'}
           id={answer.answer2.id}
+          pitchType={answer.label}
         />
       </View>
     </View>

@@ -13,6 +13,8 @@ import ModifyBillingScreen from '_scenes/modifybilling';
 import LogOutScreen from '_scenes/logout';
 import SelectLevel from '_scenes/selectlevel/SelectLevel';
 import QuizScreen from '_scenes/quiz/QuizScreen';
+import QuizResult from '_scenes/quizresult/QuizResult';
+import ResultView from '_scenes/quizresult/ResultView';
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 function MyDrawer() {
@@ -69,11 +71,9 @@ export default AppNavigation = () => {
       <Stack.Navigator>
         <Stack.Screen name="Member Area" component={MyDrawer} />
         <Stack.Screen name="SelectLevel" component={SelectLevel} />
-        <Stack.Screen
-          name="QuizScreen"
-          component={QuizScreen}
-          
-        />
+        <Stack.Screen name="QuizScreen" component={QuizScreen} />
+        <Stack.Screen name="Your Score" component={ResultView} />
+        <Stack.Screen name="QuizResult" component={QuizResult} />
       </Stack.Navigator>
     </NavigationContainer>
   );

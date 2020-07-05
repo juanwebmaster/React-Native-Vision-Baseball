@@ -15,6 +15,20 @@ const answer_options = {
   correctness: {},
   user_answered: {},
 }
+const reportResult = {
+  user_ip: '',
+  user_id: '',
+  user_name: '',
+  user_email: '',
+  user_phone: '',
+  quiz_id: '',
+  start_date: '',
+  end_date: '',
+  score: 0,
+  options: {correctness: {},
+  user_answered: {},},
+  quiz_uniqueid: '',
+}
 const SelectLevel = ({route, navigation}) => {
   const [state, setState] = useState('default');
   const {data} = route.params;
@@ -25,6 +39,10 @@ const SelectLevel = ({route, navigation}) => {
   AsyncStorage.setItem(
     'answersStore',
     JSON.stringify(answer_options)
+  )
+  AsyncStorage.setItem(
+    'resultStore',
+    JSON.stringify(reportResult)
   )
   useFocusEffect(
     React.useCallback(() => {
