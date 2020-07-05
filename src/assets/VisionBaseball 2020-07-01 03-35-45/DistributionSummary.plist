@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>VisionBaseball.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>FD71C148BB098BDEEB3014CC1476B2FC46A0C105</string>
+				<key>dateExpires</key>
+				<string>6/4/21</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>FD71C148BB098BDEEB3014CC1476B2FC46A0C105</string>
+						<key>dateExpires</key>
+						<string>6/4/21</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>JWPlayer_iOS_SDK.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>R78P4XQP9C</string>
+						<key>name</key>
+						<string>Mark Brooks</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>775L925NWM.org.native.VisionBaseball</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>R78P4XQP9C</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>775L925NWM.org.native.VisionBaseball</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>VisionBaseball.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>111b9b7e-8e4f-4939-a93a-f4c5c4dce88b</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: org.native.VisionBaseball</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>R78P4XQP9C</string>
+				<key>name</key>
+				<string>Mark Brooks</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

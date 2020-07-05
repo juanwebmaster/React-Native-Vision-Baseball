@@ -56,14 +56,10 @@ const LoginForm = ({setLoggedIn}) => {
   const [email, setEamil] = useState('');
   const [password, setPassword] = useState('');
   const onButtonPress = async () => {
-    if (email !== '' && password !== '') {
-      if (email == 'guest' && password == 'Marius4Spata!!') {
-        const result = await getPosts(email, password);
-        setLoggedIn(saveToStorage(result));
-        // console.log(result);
-        
-        
-      }
+    if (email !== '' && password !== '') {     
+      const result = await getPosts(email, password);
+      setLoggedIn(saveToStorage(result));
+      // console.log(result);
     }
   };
 
